@@ -1,0 +1,70 @@
+body
+{
+	font-family: Times New Roman;
+	background-color: #F8F8FF;
+} /*body*/
+
+
+
+h1
+{
+	font-family: Helvetica;
+	text-align: center;
+
+	margin-top: 10;
+	margin-bottom: 5;
+} /*h1*/
+
+
+
+p.blocktext
+{
+    margin: auto;
+		margin-top: 5;
+		margin-bottom: 5;
+    width: 640;
+}
+
+
+
+iframe
+{
+	display: block;
+	width: 40em;
+	margin: auto;
+	margin-top: 50;
+	margin-bottom: 50;
+	border: 0;
+
+	width: 640;
+	height: 480;
+}
+
+
+
+#page
+{
+	-moz-box-shadow: 5px 5px 5px 5px #777777; 
+	-webkit-box-shadow: 5px 5px 5px 5px #777777;
+	box-shadow: 5px 5px 5px 5px #777777;
+
+	width: 800;
+	height: auto;
+	margin: auto;
+	margin-top: 50;
+	padding: 10
+}
+
+
+
+#homelinks
+{
+	font-family: Helvetica;
+	text-align: center;
+
+	margin-top: 20;
+	margin-bottom: 20;
+
+	word-spacing: 2em;
+
+}
