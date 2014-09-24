@@ -93,6 +93,6 @@ iframe
 #listlinks
 {
 	font-family: Helvetica;
-	word-spacing: 2em;
-	width: 640
+	margin-top:20
+	margin-bottom:20
 }
