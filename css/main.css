@@ -35,10 +35,11 @@ p.blocktext
    /* width: 640;*/
 }
 
-pre.code
+div.code
 {
 	font-family: Courier New
 	margin-left: 5;
+	white-space: pre;
 }
 
 
