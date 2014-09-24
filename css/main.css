@@ -35,6 +35,12 @@ p.blocktext
    /* width: 640;*/
 }
 
+pre.code
+{
+	font-family: Courier New
+	margin-left: 5;
+}
+
 
 
 iframe
