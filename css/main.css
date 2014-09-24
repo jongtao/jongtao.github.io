@@ -38,7 +38,8 @@ p.blocktext
 div.code
 {
 	font-family: Courier New
-	margin-left: 5;
+	margin: auto;
+	margin-left: 32;
 	white-space: pre;
 }
 
