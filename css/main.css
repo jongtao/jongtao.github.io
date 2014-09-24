@@ -15,6 +15,17 @@ h1
 	margin-bottom: 5;
 } /*h1*/
 
+h2
+{
+	font-family: Helvetica;
+	text-align: left;
+
+	margin-top: 10;
+	margin-bottom: 5;
+	width: 640;
+} /*h1*/
+
+
 
 
 p.blocktext
@@ -73,4 +84,5 @@ iframe
 {
 	font-family: Helvetica;
 	word-spacing: 2em;
+	width: 640
 }

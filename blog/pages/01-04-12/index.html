@@ -21,12 +21,31 @@
 			EXIST! WHAT?!
 		</p>
 
+
 		<H2>The why and the Fix</H2>
 
-		<div id="homelinks">
-			<li><a href="/pages/01-04-12">01-04-12</a></li>
-		</div>
-	</div>
+		<p class="blocktext">
+			Sudo is used for running binaries as root temporarily. You can try
+			searching for cd (id est "whereis cd"), but it doesn’t exist! That’s
+			because cd is part of the shell and not of another program. In order to
+			use cd as root, we must use the shell as a root. The knee-jerk solution is
+			to su the way through:
+		</p>
 
+		<pre>
+			sudo su
+			cd /root
+		</pre>
+
+		<p class="blocktext">
+			or (with your favorite shell program)
+		</p>
+
+		<pre>
+			sudo bash
+			cd /root
+		</pre>
+
+	</div>
 	</BODY>
 </html>
