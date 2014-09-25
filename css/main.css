@@ -2,7 +2,6 @@ body
 {
 	font-family: Times New Roman;
 	background-color: #F8F8FF;
-	counter-reset: citations;
 } /*body*/
 
 
@@ -120,6 +119,11 @@ ol
 }
 
 ol.citations
+{
+	counter-reset: citations;
+}
+
+ol.citations:before
 {
 	content: "[" counter(citations) "] ";
 }
