@@ -126,7 +126,7 @@ ol.citations
 
 ol.citations > li:before
 {
-	content:counter(citcount);
+	content:"["counter(citcount)"] ";
 	counter-increment:citcount;
 }
 
@@ -138,5 +138,5 @@ ul
 
 li
 {
-	margin-bottom: 5
+	margin-bottom: 10
 }
