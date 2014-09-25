@@ -116,16 +116,18 @@ ol
 {
 	margin-top: 10;
 	margin-bottom: 10;
-	counter-reset: citations;
+}
+
+
+ol.citations
+{
+	counter-reset: citation;
+	list-style-type: none;
 }
 
 
 li.citation:before
 {
 	counter-increment: citations;
-}
-
-li.citation
-{
 	content: "[" counter(citations) "] ";
 }
