@@ -120,12 +120,12 @@ ol
 }
 
 
-li.citation::marker
+li.citation:before
 {
-	content: "[" counter(citations) "] ";
+	counter-increment: citations;
 }
 
 li.citation
 {
-	display: list-item;
+	content: "[" counter(citations) "] ";
 }
