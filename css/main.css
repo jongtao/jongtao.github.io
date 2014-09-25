@@ -126,6 +126,13 @@ ol.citations
 }
 
 
+li
+{
+	margin-bottom: 5
+}
+
+
+
 li.citation:before
 {
 	counter-increment: citations;
