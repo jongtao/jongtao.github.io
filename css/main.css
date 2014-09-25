@@ -121,7 +121,13 @@ ol
 ol.citations
 {
 	list-style-type: none;
-	white-space: pre;
+	counter-reset: citcount;
+}
+
+ol.citations > li:before
+{
+	content:counter(citcount);
+	counter-increment:citcount;
 }
 
 ul
