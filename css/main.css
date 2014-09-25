@@ -118,23 +118,19 @@ ol
 	margin-bottom: 10;
 }
 
-
 ol.citations
 {
-	counter-reset: citation;
 	list-style-type: none;
+	white-space: pre;
 }
 
+ul
+{
+	margin-top: 10;
+	margin-bottom: 10;
+}
 
 li
 {
 	margin-bottom: 5
-}
-
-
-
-li.citation:before
-{
-	counter-increment: citations;
-	content: "[" counter(citations) "] ";
 }
