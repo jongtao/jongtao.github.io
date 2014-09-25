@@ -111,3 +111,10 @@ iframe
 	margin-top:20
 	margin-bottom:20
 }
+
+ol
+{
+	margin-top: 10;
+	margin-bottom: 10;
+	margin-left: 32;
+}
