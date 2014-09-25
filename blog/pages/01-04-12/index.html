@@ -10,10 +10,8 @@
 	<div id ="printable">
 		<H1>sudo cd</H1>
 
-<div class="code">
-$sudo cd /root
-sudo: cd: command not found
-</div>
+<div class="code">$sudo cd /root
+sudo: cd: command not found</div>
 
 
 		<p class="blocktext">
@@ -29,24 +27,21 @@ sudo: cd: command not found
 			Sudo is used for running binaries as root temporarily. You can try
 			searching for cd (id est "whereis cd"), but it doesn’t exist! That’s
 			because cd is part of the shell and not of another program. In order to
-			use cd as root, we must use the shell as a root. The solution is
-			to su the way through:
+			use cd as root, we must use the shell as a root. A solution is
+			to su the way through and become the root user
 		</p>
 
-<div class="code">
-sudo su
-cd /root
-</div>
+<div class="code">$sudo su
+$cd /root</div>
 
 		<p class="blocktext">
-			or (with your favorite shell program)
+			or explicitly use the shell as root temporarily
 		</p>
 
-<div class="code">
-sudo bash
-cd /root
-</div>
+<div class="code">$sudo bash
+$cd /root</div>
 
+		
 	</div>
 	</div>
 
