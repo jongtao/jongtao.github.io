@@ -126,7 +126,6 @@ ol.citations
 
 ol.citations > li:before
 {
-	display: inline-block
 	content:"["counter(citcount)"] ";
 	counter-increment:citcount;
 	width: 2em;
