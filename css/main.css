@@ -77,7 +77,7 @@ iframe
 	height: auto;
 	margin: auto;
 	margin-top: 32;
-	padding: 10
+	padding: 10;
 }
 
 
@@ -108,8 +108,8 @@ iframe
 #listlinks
 {
 	font-family: Helvetica;
-	margin-top:20
-	margin-bottom:20
+	margin-top:20;
+	margin-bottom:20;
 }
 
 ol
