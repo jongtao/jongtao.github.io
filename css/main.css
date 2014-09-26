@@ -19,7 +19,7 @@ h2
 {
 	font-family: Helvetica;
 
-	margin: auto
+	margin: auto;
 	margin-top: 10;
 	margin-bottom: 5;
 } /*h1*/
@@ -138,5 +138,5 @@ ul
 
 li
 {
-	margin-bottom: 10
+	margin-bottom: 10;
 }
