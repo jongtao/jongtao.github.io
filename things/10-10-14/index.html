@@ -18,14 +18,18 @@
 		and maintenence of the battery. The unit was completed in 2 to 3 months
 		during an active school year. The car competed in the international 2014
 		FSAE Electric in Nebraska, Lincoln and acheived third place.
+		</p>
 
+		<p class="blocktext">
 		The dashboard display features a 128x64 LCD Screen (controlled by the
 		popular KS108), an LED bar graph, a piezo buzzer, and a rotary encoder with
 		an integrated button. Rotating the rotary encoder switched between several
 		preconfigured screens of information about the battery's condition. The
 		battery information was received via serial communication with another board
 		connected to the car's CAN bus.
+		</p>
 
+		<p class="blocktext">
 		Initially, development began on the Arduino Uno (an ATmega328P) and a simple
 		breadboard.  Since FSAE is intended as an education opportunity, I wrote a
 		graphical library for the KS108 library from scratch and tried to avoid
@@ -47,14 +51,16 @@
 		Figure 2. Bare printed circuit board
 	</div>
 
-	<p>
+	<p class="blocktext">
 	After developing the graphics driver, I realized that the Arduino Uno had
 	insufficient memory to hold the pixels states and collect data comfortably.
 	The <a href=http://www.pjrc.com/store/teensypp.html"">Teensy++ 2.0 by
 	PJRC</a>, an AT90USB1286 chip, was chosen as a replacement. The graphics
 	driver was written in with AVR constants and macros, so program was easily
 	reconfigured for the new platform.
+	</p>
 
+	<p class="blocktext">
 	The initial breadboard was bulky and fragile, so I used free-hanging wire-wrap
 	(30 AWG) to make all the connections. Since the wire is solid core and flex
 	from the lack of structural support, it eventually deteriorated from simply
@@ -84,11 +90,13 @@
 		Figure 5.	Fully populated board without the micro-controller 
 	</div>
 
-	<p>
+	<p class="blocktext">
 	Originally, a menu system was implemented, which required the integrated push
 	button to traverse. Scrapped features of the car, including a very large
 	sensor network, led to a great simplification of the virtual user interface.
+	</p>
 	
+	<p class="blocktext">
 	Light hitting the top of the LED caused the LEDs to "glow" as they diffused
 	the light. A peice of masking tape covering the top was surprisingly effective
 	in raising the contrast.
@@ -102,7 +110,7 @@
 		Figure 6. Powered on! Note the single led to test the bar graph on the left
 	</div>
 
-	<p>
+	<p class="blocktext">
 	For a very long time, the display was developed without the real information
 	to debug from, since the other systems were not completed yet. The first real
 	connection and debugging happened in a hotel room at competition. In the
@@ -140,13 +148,14 @@
 		Figure 10. Super secret flappy bird easter egg
 	</div>
 
-	<p>
-	Due to the lack of time for development, the display unit's packaging was
-	rushed. For example, the CAN micro-controller that provided compatibility was
-	simply zip-tied to the back of the display unit, which eventually led to
-	corrosion through moisture and death of the part. Another example is the
-	mechanical positioning of the unit too high up the dashboard, which rendered
-	the LED bar graphs invisible to the driver.
+	<p class="blocktext">
+	Due to the lack of time for development for both this project and projects
+	this depended on, the display unit's packaging was rushed. For example, the
+	CAN micro-controller that provided compatibility was simply zip-tied to the
+	back of the display unit, which eventually led to corrosion through moisture
+	and death of the part. Another example is the mechanical positioning of the
+	unit too high up the dashboard, which rendered the LED bar graphs invisible to
+	the driver.
 	</p>
 
 	<div class="img">
@@ -171,7 +180,7 @@
 		Figure 13. The third place cup
 	</div>
 
-	<p>
+	<p class="blocktext">
 	The students of Unicamp took first place at the end. Their dashboard display
 	was interestingly spartan, with only a small dip style LED bar and a
 	seven-segment display. Perhaps there is virtue in simplicity.
