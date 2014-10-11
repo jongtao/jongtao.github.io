@@ -43,7 +43,6 @@ div.code
 	margin-top: 32;
 	margin-bottom: 32;
 	margin-left: 32;
-	white-space: pre;
 }
 
 div.gsearch
@@ -60,6 +59,14 @@ div.img
 	margin-bottom: 50;
 	text-align: center;
 	width: 480px;
+}
+
+
+pre.code
+{
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", 
+		"Lucida Typewriter", monospace;
+	font-size: 0.8em;
 }
 
 img

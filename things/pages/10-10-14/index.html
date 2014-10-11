@@ -12,13 +12,13 @@
 
 
 		<p class="blocktext">
-		A dashboard display was created for the UC Davis 2014 electric formula car
-		to provide the driver with critical information, such as battery state of
+		I created a dashboard display for the UC Davis 2014 electric formula car to
+		provide the driver with critical information, such as battery state of
 		charge, and the rest of the team with the state of the system for debugging
 		and maintenence of the battery. The unit was completed in 2 to 3 months
-		during an active school year. The car competed in the international 2014
-		<a href=http://students.sae.org/cds/formulaseries/electric/"">FSAE Electric
-		in Nebraska, Lincoln</a> competition and acheived third place.
+		during an active school year. The car competed in the international 2014 <a
+		href=http://students.sae.org/cds/formulaseries/electric/"">FSAE Electric in
+		Nebraska, Lincoln</a> competition and acheived third place.
 		</p>
 
 		<p class="blocktext">
@@ -42,6 +42,61 @@
 			the program source files to complement the graphical library. The
 			converter program requires libpng.
 		</p>
+
+		<p class="blocktext">
+		Here are the available functions from the lcd.h to interact with the LCD.
+		</p>
+
+<div class="code">
+<pre class="code">typedef struct
+{
+  uint8_t di, rw, db, cs_one, cs_two;
+} LcdInputs;
+
+void lcd_input(LcdInputs* Inputs);
+void lcd_clear();
+void lcd_init();
+void lcd_onoff();
+void lcd_draw(uint8_t lcdBuffer[2][8][64]);</pre>
+</div>
+
+
+		<p class="blocktext">
+		Here are the available functions from the graphics.h to manipulate a
+		graphics buffer in memory before writing to the LCD.
+		</p>
+
+<div class="code">
+<pre class="code">void graphics_blit(uint8_t lcdBuffer[2][8][64],
+  uint8_t dstX, uint8_t dstY, const uint8_t *bitmap,
+  uint16_t srcX, uint16_t srcY, uint8_t width,
+  uint8_t height, uint16_t rowLen, uint8_t mode);
+
+void graphics_clear_buffer(uint8_t lcdBuffer[2][8][64]);
+
+void graphics_print(uint8_t lcdBuffer[2][8][64], uint8_t dstX,
+  uint8_t dstY, char* string);
+
+void graphics_num(uint8_t lcdBuffer[2][8][64], uint8_t dstX,
+  uint8_t dstY, char* string);
+
+void graphics_rect(uint8_t lcdBuffer[2][8][64], uint8_t dstX,
+  uint8_t dstY, uint8_t width, uint8_t height, uint8_t mode);</pre>
+</div>
+
+		<p class="blocktext">
+		The PC program would convert black and white PNG images into hexidecimal
+		constants, where every bit represents a pixel, and every hex number
+		represents 8 pixels horizontally.
+		</p>
+		
+<div class="code">
+<pre class="code">PROGMEM const uint8_t bitmapCharacters[480] =
+{
+  0x01, 0x14, 0xA2, ...
+};</pre>
+</div>
+
 
 	<div class="img">
 		<a href="img/1.jpg">
