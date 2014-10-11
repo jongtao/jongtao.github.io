@@ -53,6 +53,23 @@ div.gsearch
 }
 
 
+div.img
+{
+	margin: auto;
+	margin-top: 32;
+	margin-top: 32;
+	text-align: center;
+	width: 480px;
+}
+
+img
+{
+	width: 100%;
+}
+
+
+
+
 
 iframe
 {
