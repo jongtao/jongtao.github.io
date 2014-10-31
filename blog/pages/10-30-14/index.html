@@ -25,8 +25,8 @@
 		including them into a LaTeX document seamlessly along with the associated
 		data in a table. This worklow is particularly useful if you are working on a
 		document with plots whose data may need to be revised. I have used this for
-		my lab reports successfully. This article also uses some parts from one of
-		them as an example.
+		lab reports successfully. This article also uses some parts from one of them
+		as an example.
 		</p>
 
 
@@ -191,7 +191,8 @@ plotter('overall.csv', 'overall.tex');</pre>
 		When the included data in the document is modest, one can simply use a shell
 		command and maybe even take the extra effort of putting it into a script
 		file. A single line will do. Note that the double compile is necessary for
-		LaTeX to link the inline references.
+		LaTeX to link the inline references. The double ampersands prevent further
+		execution if the previous instruction has failed.
 		</p>
 
 <div class="code">
