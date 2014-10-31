@@ -25,6 +25,16 @@ h2
 	margin-bottom: 10;
 } /*h1*/
 
+h3
+{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+
+	margin: auto;
+	margin-top: 32;
+	margin-bottom: 10;
+} /*h1*/
+
+
 
 
 
@@ -60,6 +70,16 @@ div.img
 	text-align: center;
 	width: 480px;
 }
+
+div.img75
+{
+	margin: auto;
+	margin-top: 50;
+	margin-bottom: 50;
+	text-align: center;
+	width: 360px;
+}
+
 
 
 pre.code
@@ -113,7 +133,7 @@ iframe
 	width: 640;
 	height: auto;
 	margin-top: 32;
-	margin-bottom: 32;
+	margin-bottom: 64;
 	margin-left: 80
 }
 
@@ -141,7 +161,7 @@ iframe
 ol
 {
 	margin-top: 10;
-	margin-bottom: 10;
+	margin-bottom: 32;
 }
 
 ol.citations
@@ -161,7 +181,7 @@ ol.citations > li:before
 ul
 {
 	margin-top: 10;
-	margin-bottom: 10;
+	margin-bottom: 32;
 }
 
 li
