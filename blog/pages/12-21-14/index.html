@@ -38,8 +38,8 @@ Let us do a short walkthrough of what this command does.
 <p class="blocktext">
 Using <i>find</i> alone yields the full path of every file on each line.
 Interestingly, it is difficult to recursively print all full paths on single
-lines with <i>ls</i>. The output format of <i>find</i> is convenient to parse
-with <i>sed</i>.
+lines with <i>ls</i>, which is why <i>find</i> is used instead. The output
+format of <i>find</i> is convenient to parse with <i>sed</i>.
 </p>
 
 
@@ -75,9 +75,9 @@ with <i>sed</i>.
 
 
 <p class="blocktext">
-Here, we pipe the full paths of all directories under the current one to
-sed, which replaces everything between the first forward slash and the last
-forward slash with lines depicting the tree.
+Here, we pipe the full paths of all directories under our present working
+directory into sed, which replaces everything between the first forward slash
+and the last forward slash with lines depicting the tree.
 </p>
 
 
@@ -112,10 +112,10 @@ forward slash with lines depicting the tree.
 
 
 <p class="blocktext">
-Of course, the we can elaborate on this simple command. The following command is
-the polished general purpose command. In this command, I omit hidden files by
-removing lines with hidden files from the output of <i>find</i>. I then sort the
-lines alphanumerically with <i>sort</i>. The final result is piped into
+Of course, the we can elaborate on this simple command, as demonstrated by the
+following polished command. In this command, I omit hidden files from the tree
+by removing lines with hidden files from the output of <i>find</i>. I then sort
+the lines alphanumerically with <i>sort</i>. The final result is piped into
 <i>sed</i> to draw the tree.
 </p>
 
@@ -261,7 +261,7 @@ need into the single line format that works so well with <i>sed</i>.
 	<h2>References</h2>
 	<ol class="citations">
 	<li>
-	Perderabo, "What command can display files in a tree," 
+	Perderabo, "What command can display files in a tree: Post #2," 
 	<a href="http://www.unix.com/solaris/54552-what-command-can-display-files-tree.html">
   http://www.unix.com/solaris/54552-what-command-can-display-files-tree.html</a>
 	, Accessed December 21, 2014.
