@@ -139,6 +139,18 @@ div.printable
 
 
 
+div.headprintable
+{
+	width: 640;
+	height: auto;
+	margin-top: 1;
+	margin-bottom: 1;
+	margin-left: 80
+}
+
+
+
+
 div.homelinks
 {
 	font-family: Helvetica;
