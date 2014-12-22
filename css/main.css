@@ -113,7 +113,7 @@ iframe
 
 
 
-#page
+div.page
 {
 	-moz-box-shadow: 5px 5px 5px 5px #777777; 
 	-webkit-box-shadow: 5px 5px 5px 5px #777777;
@@ -128,7 +128,7 @@ iframe
 
 
 
-#printable
+div.printable
 {
 	width: 640;
 	height: auto;
