@@ -139,7 +139,7 @@ div.printable
 
 
 
-#homelinks
+div.homelinks
 {
 	font-family: Helvetica;
 	text-align: center;
@@ -151,7 +151,7 @@ div.printable
 
 }
 
-#listlinks
+div.listlinks
 {
 	font-family: Helvetica;
 	margin-top:20;
