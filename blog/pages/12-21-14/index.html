@@ -1,6 +1,6 @@
 <html>
 	<HEAD>
-		<TITLE>TITLE</TITLE>
+		<TITLE>Printing a Unix Directory Tree Diagram</TITLE>
 		<link href="/css/main.css" type="text/css" rel="stylesheet" />
 		<script type="text/javascript" src="/js/googleAnalytics.js"></script>
 	</HEAD>
@@ -9,7 +9,7 @@
 
 	<div id ="page">
 	<div id ="printable">
-		<H1>TITLE</H1>
+		<H1>Printing a Unix Directory Tree Diagram</H1>
 
 <div class="code">
 <pre class="code">$sudo cd /root
@@ -17,21 +17,241 @@ sudo: cd: command not found</pre>
 </div>
 
 
-		<p class="blocktext">
-			Now what? You have to get to those config files that belong to root but
-			you’re not root and cd doesn’t exist. cd doesn’t exist?! BUT IT DOES
-			EXIST! WHAT?!
-		</p>
+<p class="blocktext">
+There exists a program called <i>tree</i> that recursively prints a
+graphical tree diagram to the terminal. In the spirit of the Unix
+philosophy, however, there is another way to print a tree with the basic
+Unix programs [1].
+</p>
 
-		<div class="img">
-		<a href="img/1.JPG">
-		<p><img src="img/1.JPG" alt="A breadboard layout plan"/></p>
-		</a>
-		Figure 1. A breadboard layout plan
-		</div>
+<div class="code">
+<pre class="code">find | sed 's;[^/]*/;|____;g;s;____|;  |;g'</pre>
+</div>
 
 
-		
+
+<p class="blocktext">
+Let us do a short walkthrough of what this command does.
+</p>
+
+
+
+<H2>A Walkthrough on Tree Printing</H2>
+
+
+
+<p class="blocktext">
+Using <i>find</i> alone yields the full path of every file on each line.
+Interestingly, it is difficult to recursively print all full paths on single
+lines with <i>ls</i>. The output format of <i>find</i> is convenient to parse
+with <i>sed</i>.
+</p>
+
+
+
+<div class="code">
+<pre class="code">$ find
+.
+./run_avg
+./run_avg/Makefile
+./run_avg/movAvg.c
+./run_avg/test.m
+./run_avg/ship
+./run_avg/ship/Makefile
+./run_avg/ship/generate
+./run_avg/ship/test.m
+./run_avg/ship/moving-average.pdf
+./run_avg/ship/sine.png
+./run_avg/ship/mine
+./run_avg/ship/mine/result1024.csv
+./run_avg/ship/mine/result1025.csv
+./run_avg/ship/mine/result1000000.csv
+./run_avg/ship/mine/result0.csv
+./run_avg/ship/mine/result10000.csv
+./run_avg/ship/mine/result100.csv
+./run_avg/ship/generate.c
+./run_avg/moving-average.pdf
+./run_avg/sine.png
+./run_avg/generate.c
+./run_avg/moving-average.odt
+</pre>
+</div>
+
+
+
+<p class="blocktext">
+Here, we pipe the full paths of all directories under the current one to
+sed, which replaces everything between the first forward slash and the last
+forward slash with lines depicting the tree.
+</p>
+
+
+
+<div class="code">
+<pre class="code">$ find | sed 's;[^/]*/;|____;g;s;____|;  |;g'
+.
+|____run_avg
+| |____Makefile
+| |____movAvg.c
+| |____test.m
+| |____ship
+| | |____Makefile
+| | |____generate
+| | |____test.m
+| | |____moving-average.pdf
+| | |____sine.png
+| | |____mine
+| | | |____result1024.csv
+| | | |____result1025.csv
+| | | |____result1000000.csv
+| | | |____result0.csv
+| | | |____result10000.csv
+| | | |____result100.csv
+| | |____generate.c
+| |____moving-average.pdf
+| |____sine.png
+| |____generate.c
+| |____moving-average.odt</pre>
+</div>
+
+
+
+<p class="blocktext">
+Of course, the we can elaborate on this simple command. The following command is
+the polished general purpose command. In this command, I omit hidden files by
+removing lines with hidden files from the output of <i>find</i>. I then sort the
+lines alphanumerically with <i>sort</i>. The final result is piped into
+<i>sed</i> to draw the tree.
+</p>
+
+
+
+<div class="code">
+<pre class="code">find | sed '/\/\./d' | sort -d | sed 's;[^/]*/;|___;g;s;___|;  |;g'</pre>
+</div>
+
+
+
+<p class="blocktext">
+As with all things Unix, a shell script is usually helpful.
+</p>
+
+
+
+<div class="code">
+<pre class="code">#!/bin/bash
+
+# Prints Directory Tree
+
+
+
+if [ "$1" == "-h" ]; then # show hidden files
+  find | sort -d | sed 's;[^/]*/;|____;g;s;____|;  |;g'
+
+elif [ "$1" == "-m" ]; then # expect manual input pipe
+  sed 's;[^/]*/;|____;g;s;____|;  |;g'
+
+else
+  find | sed '/\/\./d' | sort -d | sed 's;[^/]*/;|___;g;s;___|;  |;g'
+
+fi</pre>
+</div>
+
+
+
+<H2>A Comparison with the tree Program</H2>
+
+
+<p class="blocktext">
+tree is a properly written program that has all the options you could wish for.
+It is better that our little command in almost every way, especially in speed.
+<i>lt</i> is the shell script from before.
+</p>
+
+<div class="code">
+<pre class="code">$ time lt > /dev/null; time tree > /dev/null
+
+real	0m0.613s
+user	0m0.628s
+sys	0m0.104s
+
+real	0m0.078s
+user	0m0.056s
+sys	0m0.020s</pre>
+</div>
+
+<p class="blocktext">
+The output is almost exactly the same, except for the pretty box characters and
+the omission of the extra pipe characters indicating directory depth.
+</p>
+
+<div class="code">
+<pre class="code">lt; tree
+.
+|___run_avg
+|  |___generate.c
+|  |___Makefile
+|  |___movAvg.c
+|  |___moving-average.odt
+|  |___moving-average.pdf
+|  |___ship
+|  |  |___generate
+|  |  |___generate.c
+|  |  |___Makefile
+|  |  |___mine
+|  |  |  |___result0.csv
+|  |  |  |___result1000000.csv
+|  |  |  |___result10000.csv
+|  |  |  |___result100.csv
+|  |  |  |___result1024.csv
+|  |  |  |___result1025.csv
+|  |  |___moving-average.pdf
+|  |  |___sine.png
+|  |  |___test.m
+|  |___sine.png
+|  |___test.m
+.
+└── run_avg
+    ├── generate.c
+    ├── Makefile
+    ├── movAvg.c
+    ├── moving-average.odt
+    ├── moving-average.pdf
+    ├── ship
+    │   ├── generate
+    │   ├── generate.c
+    │   ├── Makefile
+    │   ├── mine
+    │   │   ├── result0.csv
+    │   │   ├── result1000000.csv
+    │   │   ├── result10000.csv
+    │   │   ├── result100.csv
+    │   │   ├── result1024.csv
+    │   │   └── result1025.csv
+    │   ├── moving-average.pdf
+    │   ├── sine.png
+    │   └── test.m
+    ├── sine.png
+    └── test.m
+
+3 directories, 19 files
+</pre>
+</div>
+
+
+
+<H2>Beyond Directory Trees</H2>
+
+<p class="blocktext">
+One drawback of the <i>tree</i> command is that it is purpose built and can not
+do anything else besides drawing directory trees (although it does just that
+very well). With our simple command we can pipe in more than just a directory
+list. We can use this to visualize things like dependencies in a C programming
+project or a simple family tree. A bit of <i>awk</i> should get whatever you
+need into the single line format that works so well with <i>sed</i>.
+</p>
+
+
 	</div>
 	</div>
 
@@ -39,12 +259,9 @@ sudo: cd: command not found</pre>
 	<div id="printable">
 	<H2>Notes</H2>
 	<p class="blocktext">
-		Written on the 4th of January in 2014
+		Written on the 21st of December in 2014
 	</p>
 
-	<p class="blocktext">
-	Last modified on the 21st of November of 2014
-	</p>
 
 	<h2>References</h2>
 	<ol class="citations">
@@ -52,12 +269,6 @@ sudo: cd: command not found</pre>
 	P. Sung, "Making gorgeous LaTeX plots with Octave," 
 	<a href="http://psung.blogspot.com/2009/05/making-gorgeous-latex-plots-with-octave.html">
 	http://psung.blogspot.com/2009/05/making-gorgeous-latex-plots-with-octave.html"</a>
-	, Accessed October 30, 2014.
-	</li>
-	<li>
-	C. Vellage, "Using tables the smart way / generate tables with pgfplotstable," 
-	<a href="http://www.latex-tutorial.com/tutorials/advanced/lesson-9/">
-	http://www.latex-tutorial.com/tutorials/advanced/lesson-9/</a>
 	, Accessed October 30, 2014.
 	</li>
 	</ol>
