@@ -19,5 +19,6 @@ LINE="'/<BODY>/a\\$ENTRY'"
 
 for file in $files
 do
-eval	sed -i.bak -e $LINE $file && rm $file.bak
+eval	sed -i.bak -e 's/<div class="page">\n<div class="headprintable">/<div
+class="headerpage">\n<div class="headprintable"/g' $file && rm $file.bak
 done
