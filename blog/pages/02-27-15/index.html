@@ -142,7 +142,7 @@ UCA0CTL1 &= ~UCSWRST; // ENABLE SPI
 		I have put my LED driving code into its own .h and .c. I have a table that
 		contains  what I would send through SPI, without the start and end frames,
 		in row major order. The assembly is there to provide a simple delay. One can
-		also check for for the SPI status register, which takes a long time. A DMA
+		also check for the SPI status register, which takes a long time. A DMA
 		would be appropriate for this application, if speed is a large issue.
 		</p>
 		
