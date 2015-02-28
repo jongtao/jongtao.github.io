@@ -143,7 +143,8 @@ UCA0CTL1 &= ~UCSWRST; // ENABLE SPI
 		contains  what I would send through SPI, without the start and end frames,
 		in row major order. The assembly is there to provide a simple delay. One can
 		also check for the SPI status register, which takes a long time. A DMA
-		would be appropriate for this application, if speed is a large issue.
+		would be appropriate for this application, if speed is a large issue. Here
+		is a bit of my .h header file.
 		</p>
 		
 <div class="code">
@@ -169,7 +170,8 @@ void put_data(uint8_t* led_table, uint16_t num_led);
 		<p class="blocktext">
 		After configuring SPI, push the frame and data into the SPI TX buffer. Note
 		that I send (num_led/16 + 1) bytes as the end frame, which is the number of
-		bytes for (N/2) bits with an extra byte to "round up."
+		bytes for (N/2) bits with an extra byte to "round up." Here is a bit of my
+		.c file.
 		</p>
 
 
