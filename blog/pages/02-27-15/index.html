@@ -134,8 +134,7 @@ UCA0CTL0 |= UCCKPH | UCMSB | UCMST | UCSYNC;
 UCA0CTL1 |= UCSSEL_2; // SMCLK
 UCA0BR0 = 0;
 UCA0BR1 = 0;
-UCA0CTL1 &= ~UCSWRST; // ENABLE SPI
-</pre>
+UCA0CTL1 &= ~UCSWRST; // ENABLE SPI</pre>
 </div>
 
 		<p class="blocktext">
@@ -159,19 +158,29 @@ UCA0CTL1 &= ~UCSWRST; // ENABLE SPI
 #define NUM_LED 48*5
 #define TABLE_SIZE NUM_LED*4
 
-static uint8_t led_table[TABLE_SIZE]; // [ 0x0E + Brightness | B | G | R ]
 
-void put_data(uint8_t* led_table, uint16_t num_led);
-</pre>
+void put_data(uint8_t* led_table, uint16_t num_led);</pre>
 </div>
 
 
+		<p class="blocktext">
+		The led_table is an array of 8 bit types. It is the brightness, blue value,
+		green value, and red value for each LED laid out in row major order. The
+		data for the first LED starts at led_table[0], while the second LED starts
+		at led_table[4]. led_table[4+1] would be the location of the blue value for
+		the second LED.
+		</p>
+
+<div class="code">
+<pre class="code">uint8_t led_table[TABLE_SIZE]; // [ 0x0E + Brightness | B | G | R ]</pre>
+</div>
+
 
 		<p class="blocktext">
-		After configuring SPI, push the frame and data into the SPI TX buffer. Note
-		that I send (num_led/16 + 1) bytes as the end frame, which is the number of
-		bytes for (N/2) bits with an extra byte to "round up." Here is a bit of my
-		.c file.
+		After configuring SPI and the table of data, push the frame and data into
+		the SPI TX buffer. Note that I send (num_led/16 + 1) bytes as the end frame,
+		which is the number of bytes for (N/2) bits with an extra byte to "round
+		up." Here is a bit of my .c file.
 		</p>
 
 
@@ -179,8 +188,6 @@ void put_data(uint8_t* led_table, uint16_t num_led);
 
 <div class="code">
 <pre class="code">#include "led_drive.h"
-
-static uint8_t led_table[TABLE_SIZE]; // [ 0x0E + Brightness | B | G | R ]
 
 void put_data(uint8_t* led_table, uint16_t num_led)
 {
