@@ -85,12 +85,12 @@
 
 
 		<p class="blocktext">
-		The datasheet describes a SPI frame that's fairly straight forward
+		The datasheet describes a SPI frame that's fairly straight forward:
 		</p>
 
 		<ol>
 		<li>4 bytes of 0x00 as a start frame.</li>
-		<li>A brightness byte (0xE0 + value), a blue value byte, a green value byte,
+		<li>For each LED, a brightness byte (0xE0 + value), a blue value byte, a green value byte,
 		and a red value byte.</li>
 		<li>(N/2)/8 bytes of 0xFF as an end frame, where N is the number of LEDs.</li>
 		</ol>
@@ -108,7 +108,8 @@
 
 		<p class="blocktext">
 		The end frame exists because the APA102 delays the data going through a LED
-		by half a cycle [1]. Extra clocks are needed to shift the data all the way
+		by <a href="https://cpldcpu.wordpress.com/2014/11/30/understanding-the-apa102-superled/">half
+		a cycle</a> [1]. Extra clocks are needed to shift the data all the way
 		through the cascade. What the datasheet does not tell you is that the 32
 		bits at the end are not adequate for strips longer than 64 LEDs. The end
 		frame needs at least N/2 bits of 1, where N is the number of LEDs in the
@@ -182,9 +183,9 @@ void put_data(uint8_t* led_table, uint16_t num_led);</pre>
 
 		<p class="blocktext">
 		After configuring SPI and the table of data, push the frame and data into
-		the SPI TX buffer. Note that I send (num_led/16 + 1) bytes as the end frame,
-		which is the number of bytes for (N/2) bits with an extra byte to "round
-		up." Here is a bit of my .c file.
+		the SPI TX buffer byte by byte. Note that I send (num_led/16 + 1) bytes as
+		the end frame, which is the number of bytes for (N/2) bits with an extra
+		byte to "round up." Here is a bit of my .c file.
 		</p>
 
 
@@ -235,7 +236,7 @@ void put_data(uint8_t* led_table, uint16_t num_led)
 
 
 		<p class="blocktext">
-		Here is are examples of manipulating the led_table. randomize() sets every
+		Here are examples of manipulating the led_table. randomize() sets every
 		LED the same random color at a brightness of 5. random_shift() shifts all
 		the LED colors down, where the next LED takes the color of the current LED,
 		and then sets the first LED to a random color. Calling put_data() after
@@ -272,7 +273,7 @@ void random_shift(uint8_t* led_table, uint16_t num_led)
   g = rand();
   b = rand();
 
-  for(i=num_led-1; i>0; i--)
+  for(i=num_led-1; i&gt;0; i--)
   {
     index = i&lt;&lt;2;
     indexx = (i-1)&lt;&lt;2;
@@ -305,7 +306,7 @@ void random_shift(uint8_t* led_table, uint16_t num_led)
 	</p>
 
 	<p class="blocktext">
-	Last modified on the 28th of February in 2015
+	Last modified on the 2nd of March in 2015
 	</p>
 
 
