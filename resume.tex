@@ -1,5 +1,5 @@
 \documentclass[10pt]{article}
-\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage[letterpaper, margin=0.4in]{geometry}
 \usepackage{titlesec}
 \usepackage{changepage}
 
@@ -35,7 +35,7 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 \noindent\textbf{Relevant Course Work}
 \begin{itemize}
 	\setlength\itemsep{0pt}
-	\item Digital System Design and Verilog HDL, Analog Circuit Analysis and
+	\item Digital System Design and FPGAs, Analog Circuit Analysis and
 	Design, Device Physics, Electricity and Magnetism, Probabilistic Analysis of
 	Electrical and Computer Systems, Signals and Systems, Embedded Systems.
 	\item Software Development and C/C++ Programming, Discrete Mathematics, Data
@@ -48,25 +48,23 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 \begin{adjustwidth}{16pt}{0pt}
 \begin{itemize}
 	\setlength\itemsep{0pt}
-	\item Use of oscilloscopes, function generators, multimeters, and logic
-	analyzers to characterize and verify circuits.
-	\item EDA (e.g. CadSoft Eagle, Kicad, Quartus) with final assembly and testing
-	of circuit boards.
-	\item Hardware description and testing with SPICE (e.g. HSPICE, LTSPICE) and
-	Verilog HDL.
-	\item Breadboarding, soldering with both through-hole and
-	surface mount components, and wire-wrapping.
-	\item Programming in C/C++ and MIPS/ARM assembly. Scientific programming with
-	MATLAB/Octave. Automation, testing, and verification with UNIX shell.
-	\item Operating systems software development for Linux/Unix and Windows.
-	\item Embedded systems software development for Cypress PSoC,
-	Texas Instruments MSP, Atmel AVR, and ARM Cortex based platforms.
-	\item Embedded programming with both device registers and high level API.
-	Familiarity with use of embedded communication protocols and peripheral
-	devices.
-	\item Revision control with Git, compilation automation with Make, and
-	development with platform specific IDEs.
-	\item Typesetting in \LaTeX \hspace{3pt}and HTML.
+	\item Use of oscilloscopes, signal generators, spectrum analyzers,
+	multimeters, and logic analyzers to verify circuits.
+	\item Printed circuit EDA (CadSoft Eagle, Kicad) with final assembly and
+	testing of circuit boards.
+	\item Soldering of both through-hole and SMT components with hand tools and
+	oven.
+	\item Hardware description and testing with SPICE (PSPICE, LTSPICE, HPSPICE)
+	and Verilog HDL (Altera Quartus).
+	\item Programming in C/C++, MIPS/ARM assembly, MATLAB/Octave, and Bourne
+	shell.
+	\item Embedded system software development for Cypress PSoC, Texas Instruments
+	MSP, Atmel AVR, and ARM Cortex platforms. Familiarity with embedded
+	communication protocols and peripheral devices using device registers and API.
+	\item Development workflow with Git, Make, and platform specific IDEs (e.g.
+	Keil). Familiar with command line environments.
+	\item Typesetting in \LaTeX \hspace{3pt} (this document was written with
+	\LaTeX) and HTML.
 	\item Professional working proficiency in Cantonese Chinese.
 \end{itemize}
 \end{adjustwidth}
@@ -74,15 +72,18 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 \section{Experience and Projects}
 \begin{adjustwidth}{16pt}{0pt}
 
-\noindent\textbf{New Product Introduction Electrical Engineer} - Internship at Keysight Technologies
+\noindent\textbf{New Product Introduction Electrical Eng.} - Internship at
+Keysight Technologies (Formerly Agilent Tech.)
 \hfill 2015
 \begin{itemize}
 	\setlength\itemsep{0pt}
-	\item Verified power sequencing and reliability in a modular 20GHz
-	PXI Vector Signal Generator with SPICE simulations.
-	\item Wrote test automation scripts to significantly shorten the time needed
-	to generate netlists from schematics, simulate the circuit, and perform
-	evaulation of circuit reliability.
+	\item Analyzed and verified power sequencing, reliability, and design of a PXI
+	vector signal generator with SPICE simulations to provide real-time feedback
+	for design engineers.
+	\item Used BASH and Make to optimize the simulation workflow. Created new
+	metrics to quantify simulation credibility and programs to evaluate
+	simulations with those metrics. Wrote documentation for existing and new
+	software.
 \end{itemize}
 
 
@@ -91,9 +92,10 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 \hfill 2014 - 2015
 \begin{itemize}
 	\setlength\itemsep{0pt}
-	\item High voltage electric vehicle battery management system.
-	\item CAN bus sensor network logging and wireless telemetry to a custom
-	desktop application.
+	\item Created a electric vehicle battery management system, which protected
+	cells by monitoring voltage and temperature.
+	\item Built a CAN bus sensor network logger with a Cypress PSoC and wireless
+	telemetry to a desktop application.
 \end{itemize}
 
 
@@ -105,15 +107,28 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 	\setlength\itemsep{0pt}
 	\item The team took 3rd place at the SAE Electric International competition of
 	2014 in Lincoln, Nebraska.
-	\item Programmed a supervisory control unit for catching and resolving faults
-	to prevent harm to hardware and people.
-	\item Designed and built both the hardware and software of a driver dashboard
-	user interface for monitoring the vehicle's drivetrain and battery in real
-	time.
-	\item Developed a KS-108 LCD driver with basic font and geometry rendering
-	routines. Created a complementary program to convert PNG images into text
-	hexadecimal constants to be easily inserted into C program source code of the
-	dashboard user interface.
+	\item Programmed a supervisory control unit for managing power-up, shut-down,
+	driving modes, and emergencies.
+	\item Created a driver dashboard interface with an Atmel AVR for monitoring
+	vehicle information from a CAN bus.
+	\item Developed a KS-108 LCD driver for a dashboard interface with font and
+	geometry rendering.
+	\item Wrote a PNG image to C constant conversion tool to program fonts and
+	images into the dashboard interface. 
+\end{itemize}
+
+
+\vspace{8pt}
+\noindent\textbf{Proximity Boxes} - Maker Faire Project 
+\hfill 2015
+\begin{itemize}
+	\setlength\itemsep{0pt}
+	\item Created a modular interactive surface that senses a user's proximity
+	using modulated infrared reflections. The boxes vary the color of the
+	several hundred LEDs on their surfaces to indicate position and proximity of a
+	detected object.
+	\item Used a central MSP430 controller with I\textsuperscript{2}C expanders to
+	manage hundreds of I/O and pulse measurements in real time.
 \end{itemize}
 
 
@@ -122,11 +137,9 @@ University of California, Davis \hspace{4pt} with \hspace{4pt}  GPA: 3.84/4.00
 \hfill 2013
 \begin{itemize}
 	\setlength\itemsep{0pt}
-	\item Wrote a 2D survival platformer game from scratch about killer bunnies
-	and holy hand grenades with C++ and the Allegro library including art and
-	music within 48 hours.
-	\item  Ported the game from Linux to Windows within the competition for
-	cross-platform distribution.
+	\item Within 48 hours, wrote a sandbox game from scratch about killer bunnies
+	and holy hand grenades using C++ with the Allegro library, and then ported the
+	game from Linux to Windows for cross-platform distribution.
 \end{itemize}
 
 
