@@ -1,0 +1,255 @@
+<html>
+	<HEAD>
+		<TITLE>Proximity Box</TITLE>
+		<link href="../../../css/main.css" type="text/css" rel="stylesheet" />
+		<script type="text/jav:ascript" src="../../../js/googleAnalytics.js"></script>
+	</HEAD>
+
+	<BODY>
+
+<div class="page">
+<div class="headprintable">
+	<div class="homelinks">
+			<a href="../../../">Home</a></li>
+			: </li>
+			<a href="../../../blog">Blog</a></li>
+			<a href="../../../things">Things</a></li>
+			<a href="https://github.com/jongtao">GitHub</a>
+			<a href="../../../contact">Contact</a></li>
+		</div>
+</div>
+</div>
+
+
+	<div class ="page">
+	<div class ="printable">
+		<H1>Proximity Box</H1>
+
+
+		<p class="blocktext">
+			The Proximity Box is an interactive box that detects a user's proximity!
+			Last seen at the 2015 San Mateo Maker Fair!
+		</p>
+
+		<iframe
+			src="https://youtu.be/Thq4RWR8z3Y"
+			frameborder="0"
+			allowfullscreen>
+		</iframe>
+
+	
+
+
+		<H2>The Frontend</H2>
+
+		<p class="blocktext"> The Proximity Box senses a user's proximity by
+		detecting the intensity of infrared light reflected off the user. The
+		modular boxes vary the color of the several hundred LEDs on their surfaces
+		to indicate the proximity of a detected object. If you want to know about
+		the innards, skim past the following picture gallery.
+		</p>
+
+		
+
+		<div class="img">
+		<a href="img/IMG_0091.JPG">
+		<p><img src="thumb/IMG_0091.JPG" alt="The proximity box"/></p>
+		</a>
+		Figure 1. The proximity box
+		</div>
+
+
+
+		<div class="img">
+		<a href="img/IMG_0084.JPG">
+		<p><img src="thumb/IMG_0084.JPG" alt="People amazed by the staggering pretty colors"/></p>
+		</a>
+		Figure 2. People amazed by the staggering pretty colors
+		</div>
+
+
+
+		<div class="img">
+		<a href="img/IMG_0099.JPG">
+		<p><img src="thumb/IMG_0099.JPG" alt="Anything works with the box"/></p>
+		</a>
+		Figure 3. Anything works with the box
+		</div>
+
+
+		<div class="img">
+		<a href="img/IMG_0077.JPG">
+		<p><img src="thumb/IMG_0077.JPG" alt="The lights are blindingly awesome"/></p>
+		</a>
+		Figure 3. The lights are blindingly awesome
+		</div>
+
+
+
+		<div class="img">
+		<a href="img/IMG_0098.JPG">
+		<p><img src="thumb/IMG_0098.JPG" alt="Kids love it!"/></p>
+		</a>
+		Figure 4. Kids love it!
+		</div>
+
+
+
+		<div class="img">
+		<a href="img/IMG_0106.JPG">
+		<p><img src="thumb/IMG_0106.JPG" alt="Kids really love it!"/></p>
+		</a>
+		Figure 4. Kids really love it!
+		</div>
+
+
+		<div class="img">
+		<a href="img/IMG_0107.JPG">
+		<p><img src="thumb/IMG_0107.JPG" alt="Feel the box feel you"/></p>
+		</a>
+		Figure 4. Feel the box feel you
+		</div>
+
+
+
+
+		<H2>The Backend</H2>
+
+		<p class="blocktext">
+		Here are the innards of the box. (Unfortunately, I only found pictures of my
+		first revision. I may or may not update the page when I finally find the
+		newest one)
+		</p>
+
+		<H3>Sensing</H3>
+		<p class="blocktext">
+		The basic principle of the Proximity Box is to selectively shine infrared
+		light from the interactive surface to an nearby object and to detect the
+		intensity of reflections from objects. Less intensity would mean that the
+		object is further away, since intensity diminishes with distance.
+		</p>
+
+		<p class="blocktext">
+		One of the challenges of using infrared light is that ambient infrared from
+		the environment may interfere with the sensing. I found a solution by using
+		the Vishay TSSP4938 sensors, which have an optical filter to select only a
+		particular wavelength of infrared and an integrated demodulator to pick out
+		modulated infrared from the environment. Modulation can be done by simply
+		blinking an IR LED (or IR LED strips in my case) at the correct modulation
+		frequency.
+		</p>
+
+
+		<p class="blocktext">
+		Vishay's TSSP line is quite special in that they are able to express
+		intensity.  The more typical version of the sensor only detects whether or
+		not the light has exceeded a threshold and outputs a digital high or low.
+		The TSSP line, however, is able to express detected intensity as a pulse
+		width. A weak detected signal would correspond to a narrow pulse, while a
+		strong one would correspond to a wide pulse. An incredibly strong signal
+		would give a constant output with an "infinite width" pulse. Note that the pulse
+		encoding is not a continuous PWM signal, but a single impulse-like pulse
+		beginning when any low intensity IR is detected.  Essentially, the Proximity
+		Box is covered in urinal sensors. More about Vishay's TSSP can be found in
+		their <a href="materials/tsspagcpsensor.pdf">application note/brochure.</a>
+		</p>
+
+
+		<H3>Output</H3>
+		<p class="blocktext">
+		After the sensors detect proximity, corresponding colors were displayed on a
+		very long chain of APA102 RGB LEDs
+		(see <a href="../../../blog/pages/02-27-15/">my post</a> on the LED). The
+		APA102 RGB LEDs are daisy-chained LEDs with memory and a simple
+		shift-register-like SPI interface.  Although it may seem that there are four
+		separate surfaces for the Proximity Box, the LEDs are are actually daisy
+		chained across all four boxes. The output portion of the Proximity Box is
+		simply several hundred APA102 LED modules on a single chain.
+		</p>
+
+		<H3>The Motherboard</H3>
+		<div class="img">
+		<a href="img/mobo.PNG">
+		<p><img src="thumb/mobo.PNG" alt="The motherboard"/></p>
+		</a>
+		Figure 4. The motherboard
+		</div>
+
+
+		<p class="blocktext">
+		The motherboard houses the microcontroller, supporting circuity, and
+		connectors. The microcontroller used was the MSP430 (MSP-EX430F5529LP),
+		chosen for its availability at the time. Supporting circuity includes a 555
+		timer for modulating the infrared LEDs without controller intervention, a
+		MUX for selecting the infrared LEDs, and a level shifter. The motherboard
+		also includes 16 potentiometers to tune the intensity of the infrared LEDs
+		in case a stronger or weaker signal is needed. The motherboard has no power
+		circuity, because the Proximity Box is powered by a PSU taken from a
+		computer. Just three wires from the mother board are needed to push data to
+		the output LED strip. Undocumented code for the MSP430 controller can be
+		found at this
+		<a href="https://github.com/jongtao/ProxBox">GitHub repository</a> (coded
+		with Code Composer).
+		</p>
+
+
+		<div class="img">
+		<a href="img/mobo-sche.png">
+		<p><img src="thumb/mobo-sche.png" alt="The motherboard schematic"/></p>
+		</a>
+		Figure 4. The motherboard schematic
+		</div>
+
+
+		<H3>The Panels</H3>
+
+		<p class="blocktext">
+		The motherboard is connected to four panel circuits which correspond to the
+		four boxes. The panel circuits contain I2C I/O expanders that read in the
+		pulses from the TSSP sensors. Since no hardware interrupts are available at
+		this scale, the I/O expanders were simply sampled very quickly to obtain the
+		pulse width. The panels also have four FETs that modulate the infrared LEDs.
+		</p>
+
+		<div class="img">
+		<a href="img/panel.png">
+		<p><img src="thumb/panel.png" alt="The panel schematic"/></p>
+		</a>
+		Figure 4. The panel schematic
+		</div>
+
+
+		<H3>The Subpanels</H3>
+		<p class="blocktext">
+		The subpanels were not actual circuit boards, but a schematic exists for
+		it. Each panel is connected to four subpanels, which corresponds to the four
+		rows of sensors on each box. The subpanels were constructed with plenty of
+		hot glue and ribbon cables.
+		</p>
+
+		<div class="img">
+		<a href="img/subpanel.png">
+		<p><img src="thumb/subpanel.png" alt="The subpanel schematic"/></p>
+		</a>
+		Figure 4. The subpanel schematic
+		</div>
+
+
+
+
+		
+	</div>
+	</div>
+
+	<div class="page">
+	<div class="printable">
+
+	<H2>Notes</H2>
+	<p class="blocktext">
+		Written on the 13th of November in 2015
+	</p>
+
+	</div>
+	</div>
+	</BODY>
+</html>
