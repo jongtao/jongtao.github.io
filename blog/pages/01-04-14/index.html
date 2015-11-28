@@ -45,11 +45,12 @@ sudo: cd: command not found</pre>
 		<H2>The Why and the Fix</H2>
 
 		<p class="blocktext">
-			Sudo is used for running binaries as root temporarily. You can try
-			searching for cd (id est "whereis cd"), but it doesn’t exist! That’s
-			because cd is part of the shell and not of another program. In order to
-			use cd as root, we must use the shell as a root. A solution is
-			to su the way through and become the root user
+			Sudo is used for running independent binaries as root temporarily, while
+			cd is not an independent program. You can try searching for cd (i.e.
+			"whereis cd"), but it doesn’t exist! That’s because cd is part of the
+			shell and itself not an independent program. In order to use cd as root,
+			we must use the shell as root. A solution is to su the way through and
+			become the root user.
 		</p>
 
 <div class="code">
@@ -75,6 +76,9 @@ $cd /root</pre>
 	<H2>Notes</H2>
 	<p class="blocktext">
 		Written on the 4th of January in 2014
+	</p>
+	<p class="blocktext">
+		Last modified on the 28th of November in 2015 
 	</p>
 	</div>
 	</div>
