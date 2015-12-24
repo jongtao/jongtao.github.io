@@ -9,7 +9,7 @@ fi
 
 DATE=`date "+%m-%d-%y"`
 DATE2=`date "+%m/%d/%y"`
-ENTRY="\t\t\t<li><a href="/blog/pages/$DATE">\n\
+ENTRY="\t\t\t<li><a href="blog/pages/$DATE">\n\
 \t\t\t\t$DATE2: </a></li>"
 LINE="'/<ul>/a\\$ENTRY'"
 
