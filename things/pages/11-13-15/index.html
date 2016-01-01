@@ -140,23 +140,24 @@
 
 
 		<p class="blocktext">
-		Vishay's TSSP line is quite special in that they are able to express
-		intensity as a pulse width. The more typical version of the sensor only
-		detects whether or not the light has exceeded a threshold and outputs a
-		digital high or low.  A weakly detected signal would correspond to a narrow
-		pulse, while a strong one would correspond to a wide pulse. An incredibly
-		strong signal would give a constant level, an "infinite width pulse." Note
-		that the pulse encoding is not a continuous PWM signal, but a single
-		impulse-like pulse beginning when any low intensity IR is detected. More
-		about Vishay's TSSP can be found in their <a href="materials/tsspagcpsensor.pdf">
-		application note/brochure.</a>
+		Vishay's TSSP line is quite special because they can express intensity as a
+		pulse width. The more popular version of the sensor only detects whether or
+		not the light has exceeded a threshold and outputs a binary high or low.
+		With the TSSP sensor, a weakly detected signal would correspond to a narrow
+		(in time) pulse, while a strong one would correspond to a wide pulse. An
+		incredibly strong signal would give a constant level, an "infinite width
+		pulse." Note that the pulse encoding is not a continuous PWM signal, but a
+		single impulse-like pulse beginning when any low intensity IR is detected.
+		In math-land, the pulse is <i>u(t) - u(t-a)</i>, where <i>a</i> is
+		propotional to intensity. More about Vishay's TSSP can be found in their
+		<a href="materials/tsspagcpsensor.pdf">application note/brochure.</a>
 		</p>
 
 		<H3>Output</H3>
 		<p class="blocktext">
 		After the sensors detect proximity, corresponding colors were displayed on a
 		very long chain of APA102 RGB LEDs
-		(see <a href="../../../blog/pages/02-27-15/">my post</a> on the LED). The
+		(see <a href="../../../blog/pages/02-27-15/">my post on the LED</a>). The
 		APA102 RGB LEDs are daisy-chained LEDs with memory and a simple
 		shift-register-like SPI interface.  Although it may seem that there are four
 		separate surfaces for the Proximity Box, the LEDs are are actually daisy
@@ -173,7 +174,9 @@
 		<p class="blocktext">
 		Since I was a busy student at the time, the hardware was designed with lack
 		of time on mind. For example, through-hole components were chosen over SMD,
-		since it's easier to solder or probe through-hole components than SMD. 
+		since it's easier to solder or probe through-hole components than SMD.
+		Another instance is that I used a resistor network in a DIP form instead of
+		individual ones to save time while soldering.
 		</p>
 
 		<H3>The Motherboard</H3>
@@ -292,7 +295,6 @@
 <pre class="code">/* Jonathan Tao 2015 */
 #include &ltmsp430.h&gt
 #include &ltstdint.h&gt
-#include &ltstdlib.h&gt
 
 #include "led_drive.h"
 #include "sensor.h"
@@ -313,7 +315,6 @@ int main(void)
   uint8_t led_table[TABLE_SIZE]; // [ 0x0E + Brightness | B | G | R ]
   off(led_table, NUM_LED);
   uint32_t i, reset_count=0;
-  srand(32);
 
   // SENSE Table
   uint16_t sense_table[NUM_SENSE];
