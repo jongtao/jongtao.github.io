@@ -113,12 +113,13 @@
 
 
 
-		<H2>The Backend Hardware</H2>
-
+		<H2>Overview of Technology</H2>
 		<p class="blocktext">
-			Here are the innards of the box.
+		The Proximity Box uses infrared sensors for input and addressable LEDs for
+		output.
 		</p>
 
+		
 		<H3>Sensing</H3>
 		<p class="blocktext">
 		The basic principle of the Proximity Box is to shine infrared light from the
@@ -159,8 +160,20 @@
 		APA102 RGB LEDs are daisy-chained LEDs with memory and a simple
 		shift-register-like SPI interface.  Although it may seem that there are four
 		separate surfaces for the Proximity Box, the LEDs are are actually daisy
-		chained across all four boxes. The output portion of the Proximity Box is
-		simply several hundred APA102 LED modules on a single chain.
+		chained across all four boxes.
+		</p>
+
+		<H2>The Backend Hardware</H2>
+		<p class="blocktext">
+		The hardware, modular in design, is composed of the Motherboard, the Panel,
+		and the Subpanel. A single Motherboard connects to four Panels. Each Panel
+		connects to four Subpanels. In total there are 128 infrared sensors and 384
+		output LEDs.
+		</p>
+		<p class="blocktext">
+		Since I was a busy student at the time, the hardware was designed with lack
+		of time on mind. For example, through-hole components were chosen over SMD,
+		since it's easier to solder or probe through-hole components than SMD. 
 		</p>
 
 		<H3>The Motherboard</H3>
