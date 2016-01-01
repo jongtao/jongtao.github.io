@@ -113,47 +113,43 @@
 
 
 
-		<H2>The Backend</H2>
+		<H2>The Backend Hardware</H2>
 
 		<p class="blocktext">
-		Here are the innards of the box. (Unfortunately, I only found pictures of my
-		first revision. I may or may not update the page when I finally find the
-		newest one)
+			Here are the innards of the box.
 		</p>
 
 		<H3>Sensing</H3>
 		<p class="blocktext">
-		The basic principle of the Proximity Box is to selectively shine infrared
-		light from the interactive surface to an nearby object and to detect the
-		intensity of reflections from objects. Less intensity would mean that the
-		object is further away, since intensity diminishes with distance.
+		The basic principle of the Proximity Box is to shine infrared light from the
+		interactive surface to a nearby object and then detect the intensity of
+		reflections from objects. Less intensity would mean that the object is
+		further away, since intensity diminishes with distance.
 		</p>
 
 		<p class="blocktext">
-		One of the challenges of using infrared light is that ambient infrared from
-		the environment may interfere with the sensing. I found a solution by using
-		the Vishay TSSP4938 sensors, which have an optical filter to select only a
-		particular wavelength of infrared and an integrated demodulator to pick out
-		modulated infrared from the environment. Modulation can be done by simply
-		blinking an IR LED (or IR LED strips in my case) at the correct modulation
-		frequency.
+		One of the challenges of using infrared light is that ambient infrared
+		interferes with the sensing. I found a solution by using the Vishay TSSP4938
+		sensors, which have an optical filter to select only a particular wavelength
+		of infrared and have an integrated demodulator to pick out modulated
+		infrared from the environment. Modulation can be done by simply blinking an
+		IR LED (or IR LED strips in my case) at the correct modulation frequency as
+		specified in the sensor's datasheet.
 		</p>
 
 
 		<p class="blocktext">
 		Vishay's TSSP line is quite special in that they are able to express
-		intensity.  The more typical version of the sensor only detects whether or
-		not the light has exceeded a threshold and outputs a digital high or low.
-		The TSSP line, however, is able to express detected intensity as a pulse
-		width. A weak detected signal would correspond to a narrow pulse, while a
-		strong one would correspond to a wide pulse. An incredibly strong signal
-		would give a constant output with an "infinite width" pulse. Note that the pulse
-		encoding is not a continuous PWM signal, but a single impulse-like pulse
-		beginning when any low intensity IR is detected.  Essentially, the Proximity
-		Box is covered in urinal sensors. More about Vishay's TSSP can be found in
-		their <a href="materials/tsspagcpsensor.pdf">application note/brochure.</a>
+		intensity as a pulse width. The more typical version of the sensor only
+		detects whether or not the light has exceeded a threshold and outputs a
+		digital high or low.  A weakly detected signal would correspond to a narrow
+		pulse, while a strong one would correspond to a wide pulse. An incredibly
+		strong signal would give a constant level, an "infinite width pulse." Note
+		that the pulse encoding is not a continuous PWM signal, but a single
+		impulse-like pulse beginning when any low intensity IR is detected. More
+		about Vishay's TSSP can be found in their <a href="materials/tsspagcpsensor.pdf">
+		application note/brochure.</a>
 		</p>
-
 
 		<H3>Output</H3>
 		<p class="blocktext">
@@ -169,8 +165,8 @@
 
 		<H3>The Motherboard</H3>
 		<div class="img">
-		<a href="img/mobo.PNG">
-		<p><img src="thumb/mobo.PNG" alt="The motherboard"/></p>
+		<a href="img/mobo_pcb_render.png">
+		<p><img src="thumb/mobo_pcb_render.png" alt="The motherboard"/></p>
 		</a>
 		Figure 8. The motherboard
 		</div>
@@ -186,36 +182,59 @@
 		in case a stronger or weaker signal is needed. The motherboard has no power
 		circuity, because the Proximity Box is powered by a PSU taken from a
 		computer. Just three wires from the mother board are needed to push data to
-		the output LED strip. Undocumented code for the MSP430 controller can be
-		found at this
-		<a href="https://github.com/jongtao/ProxBox/tree/demo">GitHub repository</a> (coded
-		with Code Composer).
+		the output LED strip.
 		</p>
 
 
 		<div class="img">
-		<a href="img/mobo-sche.png">
-		<p><img src="thumb/mobo-sche.png" alt="The motherboard schematic"/></p>
+		<a href="img/mobo_sch.png">
+		<p><img src="thumb/mobo_sch.png" alt="The motherboard schematic"/></p>
 		</a>
 		Figure 9. The motherboard schematic
+
+
+
+		<div class="img">
+		<a href="img/IMG_0079.JPG">
+		<p><img src="thumb/IMG_0079.JPG" alt="The motherboard int the field"/></p>
+		</a>
+		Figure 10. The motherboard in the field
+		</div>
 		</div>
 
 
 		<H3>The Panels</H3>
 
+		<div class="img">
+		<a href="img/panel_pcb_render.png">
+		<p><img src="thumb/panel_pcb_render.png" alt="The panel"/></p>
+		</a>
+		Figure 11. The panel
+		</div>
+
+
 		<p class="blocktext">
 		The motherboard is connected to four panel circuits which correspond to the
-		four boxes. The panel circuits contain I2C I/O expanders that read in the
-		pulses from the TSSP sensors. Since no hardware interrupts are available at
-		this scale, the I/O expanders were simply sampled very quickly to obtain the
-		pulse width. The panels also have four FETs that modulate the infrared LEDs.
+		four boxes. The panel circuits contain TI's TCA9535 I2C I/O expanders that
+		read in the pulses from the TSSP sensors. Since no hardware interrupts are
+		available at this scale, the I/O expanders were simply sampled very quickly
+		to obtain the pulse width. The panels also have four FETs that modulate the
+		infrared LEDs.
 		</p>
 
 		<div class="img">
-		<a href="img/panel.png">
-		<p><img src="thumb/panel.png" alt="The panel schematic"/></p>
+		<a href="img/panel_sch.png">
+		<p><img src="thumb/panel_sch.png" alt="The panel schematic"/></p>
 		</a>
-		Figure 10. The panel schematic
+		Figure 12. The panel schematic
+		</div>
+
+
+		<div class="img">
+		<a href="img/IMG_0078.JPG">
+		<p><img src="thumb/IMG_0078.JPG" alt="The panel on the right and motherboard on the left"/></p>
+		</a>
+		Figure 13. The panel on the right and motherboard on the left
 		</div>
 
 
@@ -228,35 +247,82 @@
 		</p>
 
 		<div class="img">
-		<a href="img/subpanel.png">
-		<p><img src="thumb/subpanel.png" alt="The subpanel schematic"/></p>
+		<a href="img/subpanel_sch.png">
+		<p><img src="thumb/subpanel_sch.png" alt="The subpanel schematic"/></p>
 		</a>
-		Figure 11. The subpanel schematic
+		Figure 14. The subpanel schematic
 		</div>
 
-
-		<H3>The Real Backend!</H3>
-
+		<H2>The Backend Software</H2>
 		<p class="blocktext">
-		Quite blurry unfortunately.
+			The gist of the code is that I had to measure the pulse width (indicating
+			signal strength) of every sensor through I2C, convert pulse width to pixel
+			color, and then send the data to the LEDs.
+		</p>
+		<p class="blocktext">
+			The challenge was doing this fast enough for the system to respond in real
+			time. Thinking that I was working with a large and slow system, I did a
+			few hacks with loop unrolling, a few I2C header-skipping shortcuts
+			specific to the I/O expander, and parallelized polling. It turns out I
+			underestimated my hacks, so the ProxBox updates so fast (I don't remember
+			the exact rate, but it was definitely over 100 Hz), it's almost like a
+			shadow under your finger tips.
+		</p>
+		<p class="blocktext">
+			The code for this project is in this <a href="https://github.com/jongtao/ProxBox/tree/demo">
+			GitHub repository</a> (used with the Code Composer IDE). I have to admit,
+			some of the code is disgusting, since I added a lot of fixes in the last
+			minute. The following is a cleaned up version of my <i>main.c</i>.
 		</p>
 
+<div class="code">
+<pre class="code">/* Jonathan Tao 2015 */
+#include &ltmsp430.h&gt
+#include &ltstdint.h&gt
+#include &ltstdlib.h&gt
+
+#include "led_drive.h"
+#include "sensor.h"
+
+... setup/configuration function definitions here
+
+int main(void)
+{
+  WDTCTL = WDTPW | WDTHOLD;  // Stop watchdog ti
+
+  config_clock();
+  config_spi();
+  config_i2c();
+  config_gpio();
 
 
-		<div class="img">
-		<a href="img/IMG_0078.JPG">
-		<p><img src="thumb/IMG_0078.JPG" alt="The panel on the right and motherboard on the left"/></p>
-		</a>
-		Figure 12. The panel on the right and motherboard on the left
-		</div>
+  // LED Table
+  uint8_t led_table[TABLE_SIZE]; // [ 0x0E + Brightness | B | G | R ]
+  off(led_table, NUM_LED);
+  uint32_t i, reset_count=0;
+  srand(32);
+
+  // SENSE Table
+  uint16_t sense_table[NUM_SENSE];
 
 
-		<div class="img">
-		<a href="img/IMG_0079.JPG">
-		<p><img src="thumb/IMG_0079.JPG" alt="The motherboard int the field"/></p>
-		</a>
-		Figure 13. The motherboard in the field
-		</div>
+  for(;;)
+  {
+    P1OUT ^= 0x01; // blinky
+
+    gather(sense_table);
+    off(led_table, NUM_LED);
+    process(led_table, sense_table);
+    put_data(led_table, NUM_LED);
+
+  } // main loop
+
+  return 0;
+}</pre>
+</div>
+
+	
+
 
 
 
@@ -271,6 +337,11 @@
 	<div class="printable">
 
 	<H2>Notes</H2>
+	<p class="blocktext">
+		Revised on 1/1/16: I finally found my found and fixed my PCB files. The
+		KiCad people decided that it would be a good idea to change the file format
+		and break everything.
+	</p>
 	<p class="blocktext">
 		Written on the 13th of November in 2015
 	</p>
