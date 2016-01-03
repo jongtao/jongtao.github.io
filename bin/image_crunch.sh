@@ -14,7 +14,7 @@ for file in $@
 do
 	in=$(basename "$file")
 	out=`echo $in | sed 's/\.+$/\.$format/'`
-	ffmpeg -i $file -q:v $quality -vf\
+	ffmpeg -loglevel info -i $file -q:v $quality -vf\
 	"scale=iw*min($width/iw\,$height/ih):ih*min($width/iw\,$height/ih)"\
 	 $dest/$out
 done
