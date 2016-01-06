@@ -43,14 +43,9 @@
 		</div>
 
 		<p class="blocktext">
-		The circuit was designed to fit into a 3.3V system, receive a digital
-		ivnput, and output a analog output corresponding to proximity. It also
-		provided a way to remove slow ambient infrared noise from the main signal.
-		First, while TX is low, the RX is read by an ADC to determine the ambient
-		noise level (A).  Then, the TX is pulsed high, and the ADC is read again
-		(B). The signal without ambient noise is the second reading minus the first
-		reading (B-A). This works reliably when the noise is near DC. Higher
-		frequency AC noise can be rejected by averaging many readings (low pass).
+		The principle of operation is to send infrared light out and then detect how
+		much is reflected back. The magnitude of the detected reflection corresponds
+		to proximity.
 		</p>
 
 
@@ -60,6 +55,19 @@
 		</a>
 		Figure 2. A breadboarded prototype (side view)
 		</div>
+
+		<p class="blocktext">
+		The circuit was designed to fit into a 3.3V system, to receive a digital
+		input, and to provide an analog output corresponding to proximity. It also
+		provided a way to remove slow ambient infrared noise from the main signal.
+		First, while TX (the input to the transmitting LED side) is low, the RX
+		(output of the op-amp) is read by an ADC to determine the ambient
+		noise level (A). Then, the TX is pulsed high, and the ADC is read again (B).
+		The signal without ambient noise is the second reading minus the first
+		reading (B-A). This works reliably when the noise is near DC. Higher
+		frequency AC noise can be rejected by averaging many readings, which is a
+		low-pass.
+		</p>
 
  		<iframe
 			src="https://www.youtube.com/embed/Rys6kVA1FkI"
@@ -73,11 +81,11 @@
 		reference, the Atmel ATMega's ADC is about 15 ksps). At higher frequency
 		inputs, the receiving side can't really keep up. A quick hack to compensate
 		for a slow rising edge is to place a small capacitance (&lt= 10 nF) in
-			parallel with the transistor's bias resistor. This is known as a "speed up
-			capacitor," which gives the transistor an extra nudge for those higher
-			frequencies. A 10 nF capacitor actually causes some overshoot on the
-			transmitting LED, which compensates for a droopy leading edge on the
-			recieving side.
+		parallel with the transistor's bias resistor. This is known as a "speed up
+		capacitor," which gives the transistor an extra nudge for those higher
+		frequencies. A 10 nF capacitor actually causes some overshoot on the
+		transmitting LED, which compensates for a droopy leading edge on the
+		recieving side.
 		</p>
 
 
