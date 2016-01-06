@@ -1,0 +1,83 @@
+<html>
+	<HEAD>
+		<TITLE>PDF to PNG for Black and White Diagrams</TITLE>
+		<link href="../../../css/main.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="../../../js/googleAnalytics.js"></script>
+	</HEAD>
+
+	<BODY>
+
+<div class="headerpage">
+<div class="headprintable">
+	<div class="homelinks">
+			<a href="../../../">Home</a></li>
+			: </li>
+			<a href="../../../blog">Blog</a></li>
+			<a href="../../../things">Things</a></li>
+			<a href="https://github.com/jongtao">GitHub</a>
+			<a href="../../../contact">Contact</a></li>
+		</div>
+</div>
+</div>
+
+
+	<div class ="page">
+	<div class ="printable">
+		<H1>PDF to PNG for Black and White Diagrams</H1>
+
+
+		<p class="blocktext">
+			Use ImageMagick on the Unix command line as shown below to convert a PDF
+			to a PNG. It works well on black and white diagrams.
+		</p>
+
+
+<div class="code">
+<pre class="code">convert -density 600 input.pdf -alpha off -quality 95 output.png</pre>
+</div>
+
+
+		<p class="blocktext">
+		<i>-density</i>: controls "geometry size," which is like pixel density.
+		</p>
+
+		<p class="blocktext">
+		<i>-alpha</i>:  replaces a transparent background with a white one. 
+		</p>
+
+		<p class="blocktext">
+		<i>-quality</i>: Tens digit is zlib compression level. Ones digit is PNG
+		filter type. More about this on the <a
+		href="http://www.imagemagick.org/script/command-line-options.php#quality">ImageMagick
+		reference page.</a>
+		</p>
+
+		<p class="blocktext">
+		My goal was to preserve details in schematic and drawing PDFs I have. The
+		density should be adjusted for desired results, since it depends on how
+		dependent the diagram is on pixel count. The quality factor of 95 specifies
+		a zlib compression of 9 (highest compression) with an adaptive PNG filter 5.
+		The resulting file size is pretty good. I tried JPEG, which resulted in
+		mediocre quality and large file sizes. JPEG doesn't help when it comes to
+		black and white diagrams.
+		</p>
+
+
+
+		
+	</div>
+	</div>
+
+	<div class="page">
+	<div class="printable">
+	<H2>Notes</H2>
+	<p class="blocktext">
+		Written on the 5th of January in 2016
+	</p>
+
+
+
+	</div>
+	</div>
+	</BODY>
+</html>
