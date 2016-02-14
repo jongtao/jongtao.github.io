@@ -14,6 +14,6 @@
 }}}}
 \put(3151,-1636){\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\SI{53.13}{\degree}$}%
 }}}}
-\put(3601,-2386){\rotatebox{58.0}{\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$r = 0.1369 L = L/7$}%
+\put(3601,-2386){\rotatebox{58.0}{\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$r = 0.1369 L \approx L/7$}%
 }}}}}
 \end{picture}%
