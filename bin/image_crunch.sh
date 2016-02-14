@@ -11,6 +11,6 @@ echo $@
 for file in $@
 do
 	in=$(basename "$file")
-	out=`echo $in | sed 's/\.+$/\.$format_suffix/'`
+	out=`echo $file | sed 's/\.+$/\.$format_suffix/'`
 	convert $in -resize ${width}x${height}^ $dest/$out
 done
