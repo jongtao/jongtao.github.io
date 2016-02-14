@@ -10,7 +10,7 @@
   \selectfont}%
 \fi\endgroup%
 \begin{picture}(2610,2793)(2033,-3220)
-\put(2476,-586){\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$L_{chord} = 0.1215 L \approx L/8$}%
+\put(2476,-586){\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$L_{chord} = 0.1216 L \approx L/8$}%
 }}}}
 \put(3151,-1636){\makebox(0,0)[lb]{\smash{{\SetFigFont{20}{24.0}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\SI{53.13}{\degree}$}%
 }}}}
