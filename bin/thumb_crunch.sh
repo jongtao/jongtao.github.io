@@ -1,10 +1,10 @@
 #!/bin/bash
 # Scales images to specified maximum dimentions
-width=1024
-height=1014
+width=450
+height=450
 format_suffix=jpg
-dest=converted_img
-quality=60
+dest=converted_thumbs
+quality=40
 
 mkdir -p $dest
 echo $@
