@@ -51,8 +51,26 @@
 		<ul>
 		<li>The frame begins with <b>0x7E</b></li>
 		<li>Control characters are escaped by preceding the character with
-		<b>0x7D</b> and XOR-ing the character with <b>0x20</b></li>
+		<b>0x7D</b> and XOR-ing the character with <b>0x20</b>. The XOR value is
+		arbirary and is there to prevent escaped control characters from being read
+		accidentally.
+		</li>
 		</ul>
+
+		<H2>An Example</H2>
+		<p class="blocktext">
+		Message: A, B, 0x7E, C, 0x7D, D
+		</p>
+		<p class="blocktext">
+		Framed Message: 0x7E, A, B, 0x7D, 0x5E, C, 0x7D, 0x5D, D
+		</p>
+		<p class="blocktext">
+		Note that a frame may include only one 0x7E character, which is the frame's
+		header. All control characters are preceded 0x7D. Note that if the receiver
+		misses the 0x7D escape character and starts reading from 0x5E, the XOR with
+		0x20 prevents the receiver from falsely thinking that it is receiving a
+		frame's header.
+		</p>
 
 		<H2>Read the Code (or the Comments)</H2>
 		<p class="blocktext">
