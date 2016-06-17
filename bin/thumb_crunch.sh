@@ -4,7 +4,7 @@ width=450
 height=450
 format_suffix=jpg
 dest=converted_thumbs
-quality=40
+quality=75
 
 mkdir -p $dest
 echo $@
