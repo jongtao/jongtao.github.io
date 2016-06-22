@@ -1,0 +1,298 @@
+<html>
+	<HEAD>
+		<TITLE>A Software Defined Frequency Synthesizer</TITLE>
+		<link href="../../../css/main.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="../../../js/googleAnalytics.js"></script>
+	</HEAD>
+
+	<BODY>
+
+<div class="headerpage">
+<div class="headprintable">
+	<div class="homelinks">
+			<a href="../../../">Home</a></li>
+			: </li>
+			<a href="../../../blog">Blog</a></li>
+			<a href="../../../things">Things</a></li>
+			<a href="https://github.com/jongtao">GitHub</a>
+			<a href="../../../contact">Contact</a></li>
+		</div>
+</div>
+</div>
+
+
+	<div class ="page">
+	<div class ="printable">
+		<H1>A Software Defined Frequency Synthesizer</H1>
+
+
+		<div class="img">
+		<a href="img/top_view.JPG">
+		<p><img src="thumbs/top_view.JPG" alt="The system on a
+		breadboard"/></p>
+		</a>
+		The system on a breadboard
+		</div>
+
+
+		<p class="blocktext">
+		I built a cheap software defined synthesizer with an Atmel AVR
+		microcontroller and a discrete transistor VCO. In simple words, it's just a
+		frequency generator.
+		</p>
+
+		<p class="blocktext">
+		The microcontroller measures the frequency from a VCO and adjusts its DAC
+		output voltage to the VCO, so that the VCO's output frequency matches a
+		user-defined target.  This closed loop feedback system is essentially a
+		software defined PLL (Phased Locked Loop). The software is equivalent to a
+		hardware PLL with a ridiculously large divider value and an extremely flabby
+		loop filter. Since the feedback loop is very slow compared to a hardware
+		PLL, the system is used to correct slow oscillator drift rather than
+		synchronize the output phase to a reference, as hardware
+		PLLs usually do.
+		</p>
+
+		<iframe
+			src="https://www.youtube.com/embed/LeITPatU5BM"
+			frameborder="0"
+			allowfullscreen>
+		</iframe> 
+
+		<div class="img">
+		<a href="xfig/block.png">
+		<p><img src="xfig/block.png" alt="A block diagram"/></p>
+		</a>
+		A block diagram of the synthesizer
+		</div>
+
+
+		<div class="img">
+		<a href="img/cheap_synth.png">
+		<p><img src="thumbs/cheap_synth.png" alt="A schematic of the synthesizer"/></p>
+		</a>
+		A schematic of the synthesizer
+		</div>
+
+		<H2>The System Brief</H2>
+
+		<ul>
+			<li>
+			Frequency synthesis from 100 kHz to 1800 kHz in arbitrary intervals. The
+			output frequency is accurate to 200 ppm.
+			</li>
+			<li>
+			A quad seven-segment display shows the target frequency with a
+			precision of 1 kHz.
+			</li>
+			<li>
+			There are two buttons to increase or decrease the frequency in 1 kHz
+			intervals. I also got carried away and added a feature where it steps in
+			10 kHz intervals if you hold down the button. The 1 kHz control interval
+			was chosen to match the display's precision.
+			</li>
+			<li>
+			It is a low voltage system where both the microcontroller and VCO run on
+			3.3 V.
+			</li>
+			<li>
+			Low cost! Transistors are cheap.
+			</li>
+			<li>
+			It sometimes breaks when I touch it. I should not have built it on a
+			breadboard. I should not have built it on a breadboard. I should not have
+			built it on a breadboard.
+			</li>
+		</ul>
+
+		<div class="img">
+		<a href="img/buttons_display.JPG">
+		<p><img src="thumbs/buttons_display.JPG" alt="User interface showing 1 MHz
+		being synthesized"/></p>
+		</a>
+		User interface showing 1 MHz being synthesized
+		</div>
+
+		<div class="img">
+		<a href="img/counter.JPG">
+		<p><img src="thumbs/counter.JPG" alt="A frequency counter confirms the
+		synthesis of 1 MHz"/></p>
+		</a>
+		A frequency counter confirms the synthesis of 1 MHz.
+		</div>
+
+
+		<div class="img">
+		<a href="img/waveform.JPG">
+		<p><img src="thumbs/waveform.JPG" alt="A 1 MHz waveform"/></p>
+		</a>
+		The 1 MHz output waveform. 50 mV/div, 0.5 us/div.
+		</div>
+
+
+
+		<H2>The Hardware</H2>
+		<p class="blocktext">
+		A VCO, PWM filter, and limiter.
+		</p>
+
+		<div class="img">
+		<a href="img/analog_section.JPG">
+		<p><img src="thumbs/analog_section.JPG" alt="The analog section"/></p>
+		</a>
+		The analog section
+		</div>
+
+
+		<H3>The VCO</H3>
+		<p class="blocktext">
+		The VCO is based on a current controlled relaxation oscillation (emitter
+		coupled). The voltage control is not linear with frequency, so feedback is
+		necessary to get accurate frequency control. It is difficult to buffer and
+		amplify the output frequency from the VCO because any current drawn from
+		this circuit will affect the frequency or even duty cycle.
+		</p>
+
+		<div class="img">
+		<a href="img/vco.JPG">
+		<p><img src="thumbs/vco.JPG" alt="The VCO with timing capacitor"/></p>
+		</a>
+		The VCO with timing capacitor
+		</div>
+
+		<H3>PWM DAC Voltage Control and Filter</H3>
+		<p class="blocktext">
+		The VCO's voltage control input is driven by the microcontroller through a
+		PWM DAC. The PWM ripple contributes to phase noise, so it is important to
+		filter it out. However, it is also important to allow the PWM output to
+		fluctuate at lower frequencies to make voltage corrections quickly.
+		</p>
+		<p class="blocktext">
+		My PWM filter is a simple double RC filter (two RC lowpass filters in series).
+		According to SPICE, the filter crushes the 1 kHz ripple with about -100 dB
+		of attenuation, but at the same time preserves frequency response up to 10
+		Hz (although with a little attenuation).
+		</p>
+		<p class="blocktext">
+		A subtlety of using an RC filter with the VCO is that the current gain,
+		Beta, of the VCO's input transistor is not that great (it's a 2N2222). The
+		base current of that transistor will cause a voltage drop across the RC
+		filter. The voltage drop limits the controlled frequency range on the VCO,
+		so a high beta transistor, Darlington pair, or an op-amp should be used.
+		</p>
+		<p class="blocktext">
+		I chose to use a PWM DAC over a GPIO R2R ladder DAC because the synthesizer
+		is a feedback control system that requires components with monotonic
+		outputs. In other words, a monotonic DAC is required to make small
+		adjustments in the right direction. R2R ladders are difficult to implement
+		reliably due to inconsistencies in GPIO drive levels and resistor accuracy.
+		Often, the inconsistencies will not only reduce accuracy but also create
+		instances where the output changes non-monotonically.
+		</p>
+
+		<H3>Signal Limiter</H3>
+		<p class="blocktext">
+		Following the VCO are additional gain stages and buffers. The gain stages
+		act as a limiter to saturate the VCO's output signal against the supply
+		rails. The GPIO pins on the microcontroller are essentially Schmitt
+		triggers, so the feedback frequency signal needs to look somewhat like a
+		rail-to-rail digital signal.
+		</p>
+
+
+
+		<H2>Microcontroller Software</H2>
+		<p class="blocktext">
+		The microcontroller measures the output frequency, applies a PID loop filter
+		to the frequency error, and then adjusts the output of its PWM DAC so that
+		the output frequency matches the target frequency.
+		</p>
+
+		<div class="img">
+		<a href="img/digital_section.JPG">
+		<p><img src="thumbs/digital_section.JPG" alt="The digital section"/></p>
+		</a>
+		The digital section.
+		</div>
+
+		<H3>Frequency Measurement</H3>
+		<p class="blocktext">
+		The microcontroller measures the feedback frequency by using a gated
+		counting method. The input frequency drives an internal counter for a set
+		period of time. The final counted value is divided by the time to obtain the
+		frequency.
+		</p>
+		<p class="blocktext">
+		I used two internal counters, an interrupt driven algorithm, and a crystal
+		system clock source to obtain a more precise measurement. One counter was
+		driven directly by the feedback frequency from the limiter to count the
+		edges of the signal, while a second counter was used to precisely gate the
+		frequency counting at regular intervals.
+		</p>
+		<p class="blocktext">
+		A limitation of frequency counting is that the microcontroller's inputs are
+		synchronized. That means that the microcontroller samples its inputs at its
+		system's clock frequency. As a result, the microcontroller can only measure
+		frequencies as the Nyquist rate allows. The frequency to be measured must be
+		less than half of the system clock. The duty cycle of the measured signal
+		should be 50% for optimal measurement, so that the sampling can capture the
+		transitions easily.
+		</p>
+		<p class="blocktext">
+		In this circuit, I run the system at 8 MHz, so the highest frequency I would
+		dare to measure is 3 MHz, which is a little lower than the theoretical 4
+		MHz.
+		</p>
+
+		<H3>PID Loop Filter</H3>
+		<p class="blocktext">
+		I used a PID loop filter to process the difference between the target
+		frequency and the measured frequency. I also used a different filter for
+		when the error is large and small. When the error is very large, I use a
+		proportional and a derivative term to get to the target quickly with little
+		overshoot. When the error is relatively small, I increase all the constants
+		and include an integral term to eliminate steady state error. The steady
+		state error comes from drift of the VCO.
+		</p>
+		<p class="blocktext">
+		The PID filter was manually tuned. Guessing and checking is hard.
+		</p>
+
+		<H3>PWM DAC Software</H3>
+		<p class="blocktext">
+		I used 13 bits for the PWM counter, which gives me a DAC with 13 bits of
+		resolution.  This provides an output voltage range between 3.3 V and 0 V at
+		intervals of 400 uV. The small 400 uV from a PWM DAC sounds ridiculous, but
+		I was looking for fine control over accuracy. The feedback loop corrects
+		accuracy problems.  Also, quantization noise from a low DAC resolution
+		contributes to phase noise as the control system chatters across the large
+		voltage intervals.
+		</p>
+		<p class="blocktext">
+		Higher resolution gives fine control. However, it decreases the PWM
+		frequency, which forces you to decrease your PWM filter's cutoff, which
+		decreases the frequency response of voltage corrections made by the
+		software. If the PWM filter's cutoff isn't decreased accordingly with the
+		PWM frequency, the DAC output will have a lot of ripple which will turn into
+		phase noise at the VCO.
+		</p>
+
+
+		
+	</div>
+	</div>
+
+	<div class="page">
+	<div class="printable">
+	<H2>Notes</H2>
+	<p class="blocktext">
+		Written on the 22nd of June in 2016
+	</p>
+	<p class="blocktext">
+	Source code (Atmel Studio): <a href="trans.zip">trans.zip</a>
+	</p>
+
+	</div>
+	</div>
+	</BODY>
+</html>
