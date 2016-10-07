@@ -1,5 +1,10 @@
 #!/bin/bash
-# Scales images to specified maximum dimentions
+
+# Given a list of paths scales images to specified maximum dimentions
+# puts results in a new "converted_img" directory at PWD
+# Parameters are configured for 1024x1024 "full size" images
+
+
 width=1024
 height=1014
 format_suffix=jpg

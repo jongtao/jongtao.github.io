@@ -1,5 +1,9 @@
 #!/bin/bash
-# Scales images to specified maximum dimentions
+
+# Given a list of paths scales images to specified maximum dimentions
+# puts results in a new "converted_thumbs" directory at PWD
+# Parameters are configured for 450x450 large thumbnails
+
 width=450
 height=450
 format_suffix=jpg
