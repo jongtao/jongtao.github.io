@@ -32,6 +32,8 @@
 
 		<div class="listlinks">
 		<ul>
+			<li><a href=pages/07-19-16>
+				07/19/16: rstring, A Resistor Divider Calculator Written in Rust</a></li>
 			<li><a href=pages/06-22-16>
 				06/22/16: A Software Defined Frequency Synthesizer </a></li>
 			<li><a href=pages/06-01-16>
