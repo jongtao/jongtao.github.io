@@ -129,9 +129,7 @@ iframe
 
 div.page
 {
-	-moz-box-shadow: 5px 5px 5px 5px #777777; 
-	-webkit-box-shadow: 5px 5px 5px 5px #777777;
-	box-shadow: 5px 5px 5px 5px #777777;
+	box-shadow: 0px 2px 5px 1px #777777;
 
 	width: 800;
 	height: auto;
