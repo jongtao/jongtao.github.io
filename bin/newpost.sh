@@ -14,6 +14,6 @@ ENTRY="\t\t\t<li><a href="pages/$DATE">\n\
 LINE="'/<ul>/a\\$ENTRY'"
 
 
-mkdir -p ./blog/pages/$DATE
+mkdir ./blog/pages/$DATE
 cp ./templates/post.html ./blog/pages/$DATE/index.html
 eval sed -i.bak -e $LINE ./blog/index.html
