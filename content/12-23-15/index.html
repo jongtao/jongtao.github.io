@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<title>Shrinking PDFs on Linux Command Line</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+
+<body>
+
+<div class="headerpage">
+<a href="../..">Home</a>
+</div>
+
+<div class ="page">
+<div class ="printable">
+
+<h1>Shrinking PDFs on Linux Command Line</h1>
+
+<p class="blocktext">
+Here is a script for shrinking PDFs. It uses <i>gs</i>, Ghostscript, to read in
+a PDF and to output a new one with a different quality. You can edit the quality
+by setting the <i>quality</i> variable in the script to any of the dPDFSETTINGS
+options. In general, <i>gs</i> will butcher images for reduced quality settings.
+</p>
+
+<p class="blocktext">
+<a href="comppdf.sh">comppdf.sh</a>
+</p>
+
+<div class="code">
+<pre class="code">#!/bin/bash
+
+# Recompresses PDFs
+# J. Tao 2015
+
+
+# Tweak "quality" for different compression.
+
+#  -dPDFSETTINGS=configuration
+#    Presets the "distiller parameters" to one of four predefined settings:
+#
+#      /screen selects low-resolution output similar to the Acrobat Distiller
+#      "Screen Optimized" setting.
+#
+#      /ebook selects medium-resolution output similar to the Acrobat Distiller
+#      "eBook" setting.
+#
+#      /printer selects output similar to the Acrobat Distiller "Print Optimized"
+#      setting.
+#
+#      /prepress selects output similar to Acrobat Distiller "Prepress Optimized"
+#      setting.
+#
+#      /default selects output intended to be useful across a wide variety of
+#      uses, possibly at the expense of a larger output file. 
+
+quality="/screen"
+
+
+# Usage: takes an intput PDF and output PDF. When an output PDF is not given,
+# the script outputs to STDOUT.
+if [ $# -lt 1 -o $# -gt 2 ]; then
+  echo "Usage: `basename $0` input.pdf [optional: output.pdf]" 1&gt;&amp;2
+  exit 1
+fi
+
+
+# outputs to stdout
+if [ $# -eq 1 ]; then
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=$quality \
+  -dNOPAUSE -dQUIET -dBATCH -sOutputFile=%stdout "$1"
+fi
+
+# outputs to output file
+if [ $# -eq 2 ]; then
+  gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=$quality \
+  -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" "$1"
+fi</pre>
+</div>
+
+<h2>Examples</h2>
+
+<p class="blocktext">
+I have named my script <i>comppdf</i>. The usage is as follows:
+</p>
+
+<div class="code">
+<pre class="code">$ comppdf
+Usage: comppdf input.pdf [optional: output.pdf]</pre>
+</div>
+
+<p class="blocktext">
+The following example demonstrates passing two arguments to the script.
+</p>
+
+<div class="code">
+<pre class="code">$ comppdf input.pdf output.pdf
+$ du -h input.pdf output.pdf 
+162M	input.pdf
+139M	output.pdf</pre>
+</div>
+
+<p class="blocktext">
+The following example demonstrates passing a single argument. In this case, the
+script dumps the new PDF to STDOUT, which can be redirected.
+</p>
+
+<div class="code">
+<pre class="code">$ comppdf input.pdf &gt; output.pdf
+$ du -h input.pdf output.pdf 
+162M	input.pdf
+139M	output.pdf</pre>
+</div>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 23rd of December in 2015.
+</p>
+
+<h2>References</h2>
+<ol class="citations">
+<li>
+Mailman, "Compress PDF files on Linux," 
+<a href="http://tuxdiary.com/2015/04/07/compress-pdf-files-linux/">
+http://tuxdiary.com/2015/04/07/compress-pdf-files-linux/"</a>
+, Accessed December 23, 2015.
+</li>
+</ol>
+
+</div>
+</div>
+
+
+</body>
+</html>

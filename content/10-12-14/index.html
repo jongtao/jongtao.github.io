@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<title>Wiring 74-Series Circuits</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+<body>
+
+<div class="headerpage">
+<a href="../..">Home</a>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h1>Wiring 74-Series Circuits</h1>
+
+<p class="blocktext">
+The year I took my digital logic class at university was the last year in which
+students actually built their machines physically with 74-series and wires. The
+curriculum has moved on to teach students to implement their machines in code
+with HDLs on programmable logic devices, a very practical method of constructing
+complex circuits. Building these circuits by hand is now somewhat rare and maybe
+even a lost art. Here are some of the circuits I built for the class, both on
+breadboards and with wire wrap.
+</p>
+
+<p class="blocktext">
+Planning things out is the first step to speedy debugging. This circuit was
+built for a lab that required a lot of probing and reconfiguring of the circuit.
+The orange wires were ones to be reconfigured. I know you are probably cringing
+from the use of threaded instead of proper solid core wires. I needed a lot of
+wires quickly, and Ye Olde Radio Shack did not have a lot of choice.
+</p>
+
+<div class="img">
+<a href="img/1.JPG">
+<p><img src="img/1.JPG" alt="A breadboard layout plan"/></p>
+</a>
+Figure 1. A breadboard layout plan
+</div>
+
+<div class="img">
+<a href="img/2.JPG">
+<p><img src="img/2.JPG" alt="A modest and mediocre build of a circuit"/></p>
+</a>
+Figure 2. A modest and mediocre build of a circuit
+</div>
+
+<div class="img">
+<a href="img/3.JPG">
+<p><img src="img/3.JPG" alt="Stripped insulation from wires"/></p>
+</a>
+Figure 3. Stripped insulation from wires
+</div>
+
+<p class="blocktext">
+The following circuit is a counter that followed a certain sequence with a
+binary to decimal decoder to display the states. This was one of the largest
+circuits built in the course. The circuit was surprisingly three dimensional.
+The bundle of wires was very stiff and hard to work around to make new
+connections or to correct connections. In the end, it was satisfying to seeing
+my circuit schematic in come to life as a real machine.
+</p>
+
+<div class="img">
+<a href="img/4.JPG">
+<p><img src="img/4.JPG" alt="A large state machine"/></p>
+</a>
+Figure 4. A large state machine
+</div>
+
+
+<div class="img">
+<a href="img/5.JPG">
+<p><img src="img/5.JPG" alt="A seven-segment display to display states"/></p>
+</a>
+Figure 5. A seven-segment display to display states
+</div>
+
+
+<div class="img">
+<a href="img/6.JPG">
+<p><img src="img/6.JPG" alt="A view showing the 3D aspect of the circuit"/></p>
+</a>
+Figure 6. A view showing the 3D aspect of the circuit
+</div>
+
+
+<div class="img">
+<a href="img/7.JPG">
+<p><img src="img/7.JPG" alt="The entire counter and binary decoder machine"/></p>
+</a>
+Figure 7. The entire counter and binary decoder machine
+</div>
+
+
+<div class="img">
+<a href="img/8.JPG">
+<p><img src="img/8.JPG" alt="An isometric view of the circuit"/></p>
+</a>
+Figure 8. An isometric view of the circuit
+</div>
+
+
+<div class="img">
+<a href="img/9.JPG">
+<p><img src="img/9.JPG" alt="A DIP switch for control"/></p>
+</a>
+Figure 9. A DIP switch for control
+</div>
+
+
+<div class="img">
+<a href="img/10.JPG">
+<p><img src="img/10.JPG" alt="The display and its resistors"/></p>
+</a>
+Figure 10. The display and its resistors
+</div>
+
+
+<div class="img">
+<a href="img/11.JPG">
+<p><img src="img/11.JPG" alt="&quot;Spine&quot; of the machine"/></p>
+</a>
+Figure 11. "spine" of the machine
+</div>
+
+<p class="blocktext">
+The last circuit was a design project to create a blackjack machine. The bust
+limit was 16 instead of 21, since we live in base 2 fun land. Because of the
+extreme size and complexity of the circuit, if I were to build it on a
+breadboard, I decided to try wire wrapping the entire circuit on a very compact
+perf-board.
+</p>
+
+<div class="img">
+<a href="img/12.JPG">
+<p><img src="img/12.JPG" alt="Wire Wrapping"/></p>
+</a>
+Figure 12. Wire Wrapping
+</div>
+
+<p class="blocktext">
+Wire wrapping is quite quick, compared to normal breadboarding, since you can
+wire more or less point to point without closing off accessibility to other
+circuit components. With breadboards, you need to keep your holes exposed and
+wires out of the way. With wire wrapping, it is hard to correct mistakes, since
+finding a single small wire is difficult, but you make fewer mistakes in return.
+The resulting circuit is very robust when done correctly. All the wires and
+chips are securely held in place.
+</p>
+
+<div class="img">
+<a href="img/13.JPG">
+<p><img src="img/13.JPG" alt="The blackjack machine"/></p>
+</a>
+Figure 13. The blackjack machine
+</div>
+
+<p class="blocktext">
+Wire-wrap is extremely sensitive to choice of material. I learned the hard way
+that cheap 30 AWG wires are very hard to strip reliably without damaging the
+core. Ideally, wire-wrap wire should have "crisp" insulation that snaps and
+slides off with a normal wire stripper. The core material should not snap during
+stripping, wrapping, or unwrapping. Unwrapping is extremely important, since you
+will make mistakes.
+</p>
+
+<div class="img">
+<a href="img/14.JPG">
+<p><img src="img/14.JPG" alt="Populated wire-wrap sockets for DIP chips"/></p>
+</a>
+Figure 14. Populated wire-wrap sockets for DIP chips.
+</div>
+
+<p class="blocktext">
+A big downside of wire wrap is that it is expensive. It requires the wire-wrap
+tool and sockets, which are not cheap and hard to find due to unpopularity. The
+sockets cost about a dollar each. The wire is still cheap, though.
+</p>
+
+<div class="img">
+<a href="img/15.JPG">
+<p><img src="img/15.JPG" alt="The backend"/></p>
+</a>
+Figure 15. The backend
+</div>
+
+<div class="img">
+<a href="img/16.JPG">
+<p><img src="img/16.JPG" alt="A closeup of the completed wire-wrap connections"/></p>
+</a>
+Figure 16. A closeup of the completed wire-wrap connections
+</div>
+
+<p class="blocktext">
+Wire wrapping is an extraordinarily rewarding method of prototyping, though slow
+and tedious. The process feels somewhat like meditation, since a bit of patience
+is needed. The results are neat, compact, and impressive. The circuit I built
+fit in the palm of my hand, while my breadboarding colleagues completely filled
+their 4000 point four panel boards. For scale, the circuit was two to three
+times larger than the counter circuit I featured in this post. The act of
+wrapping wires is so simple it can be easily adapted to awkward components. If
+you have a large project that needs to be tested in a hurry or a one-off
+circuit, you can try wire wrapping instead of waiting for a printed circuit
+board.
+</p>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 12th of October in 2014
+</p>
+</div>
+</div>
+
+
+</body>
+</html>

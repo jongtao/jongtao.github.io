@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<title>Converting a SMD Packaged Chip for Breadboard Use</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+
+<body>
+
+<div class="headerpage">
+<a href="../..">Home</a>
+</div>
+
+<div class="page">
+<div class="printable">
+
+<h1>Converting a SMD Packaged Chip for Breadboard Use</h1>
+
+<div class="img">
+<a href="img/1.JPG">
+<p><img src="img/1.JPG" alt="An SMD packaged chip converted for use on a
+breadboard"/></p>
+</a>
+Figure 1. An SMD packaged chip converted for use on a breadboard
+</div>
+
+<p class="blocktext">
+Sometimes, you only have the surface mount device (SMD) package of a chip to
+work with in prototyping, but SMD chips do not fit into breadboards.  Common
+ways to solve this problem are getting the dual in-line package (DIP) version of
+the chip or soldering the chip to an SMD adapter board. What if you really
+needed to use the chip NOW? An alternative to the aforementioned sensible
+options is converting your SMD chip manually by soldering them to headers. 
+</p>
+
+<h2>The Not-So-Sensible Solution (For Desperate People)</h2>
+<p class="blocktext">
+Here, I solder an SMD packaged chip (a MCP2551 in this case) to a perforated
+prototyping board with headers. The chip is flipped upside down to prevent its
+pins from touching the plated vias and to bring the chip's pins to an easily
+accessible height for soldering. The flipping technique is sometimes called
+"turtling" by some people in the industry. If you have a non-plated perforated
+prototyping board, you can simply connect the chip's pins to the headers with
+thin traces of solder without flipping the chip, but this method is impossible
+to carry out for chips with more than eight pins. It may help to scrape some
+markings on the bottom of the chip to indicate its orientation.  The chip is
+rotated 90 degrees to fit the chip easily between the headers and to prevent the
+wires from overlapping.
+</p>
+
+<div class="img">
+<a href="img/2.JPG">
+<p><img src="img/2.JPG" alt="The soldered header pins"/></p>
+</a>
+Figure 2. The soldered header pins
+</div>
+
+<p class="blocktext">
+The headers were soldered on first. Then, a single connection was made between a
+header pin and a chip pin, so that the chip was securely attached to the board
+while soldering. Finally, each chip pin was soldered to the correct header with
+30 AWG wire-wrapping wires. The chip is held down by the many wires connecting
+across it. An extra drop of adhesive would firmly secure the chip to the board.
+</p>
+
+<div class="img">
+<a href="img/3.JPG">
+<p><img src="img/3.JPG" alt="A top-down view of the soldered chip"/></p>
+</a>
+Figure 3. A top-down view of the soldered chip
+</div>
+
+<p class="blocktext">
+In case of a larger chip, a thin enameled wire may be used, since the lack of
+thick plastic insulation allows more wires to fit across the chip. The wires
+will overlap on a larger chip, and the chip's orientation will be parallel to
+the headers. When I was finished, I clipped a corner off of the board to
+indicate chip orientation (e.g.  indicated the position of the first pin). The
+entire process took me 45 minutes on the first try. I estimate that it would
+take me about 30 minutes to do this, if I knew what I was doing.
+</p>
+
+<div class="img">
+<a href="img/4.JPG">
+<p><img src="img/4.JPG" alt="A top-down view of the soldered chip"/></p>
+</a>
+Figure 4. A view from the side
+</div>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 21st of November in 2014
+</p>
+</div>
+</div>
+
+
+</body>
+</html>

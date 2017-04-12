@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<title>YOGO Grenade</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+
+<body>
+
+<div class="headerpage">
+<a href="../..">Home</a>
+</div>
+
+<div class ="page">
+<div class ="printable">
+
+<h1>YOGO Grenade</h1>
+
+<p class="blocktext">
+YOGO Grenade is a game written for Ludum Dare 28. The name Yogo Grenade is short
+for "You Only Get One Holy Hand Grenade." The goal of the game is to hold off a
+Fibonacci series of bunnies and to stay alive for as long as possible.
+</p>
+
+<div class="img">
+<a href="img/31552-shot0.png">
+<p><img src="img/31552-shot0.png" alt="It's a vicious monster!"/></p>
+</a>
+Figure 1. It's a vicious monster!
+</div>
+
+<h2>YOGO Grenade</h2>
+
+<p class="blocktext">
+I wrote this game for the Ludum Dare 28 Competition (Winter 2013), where the
+given challenge was to write a game within 48 hours while adhering to the theme
+"You Only Get One." Once completed, all contestants would play and rate each
+others' games.
+</p>
+
+<p class="blocktext">
+The player character is a little girl with a machine gun in a blocky world.
+There is a purple portal where evil man-eating bunnies spawn. Every few seconds
+bunnies spawn in Fibonacci increments to overwhelm the player.  In times of need
+the player can throw a single holy hand grenade which wipes out all the bunnies.
+The grenade throw is ultimately futile, since the Fibonacci increments become
+ridiculous over time. The game is heavily inspired by Monty Python and the Holy
+Grail.
+</p>
+
+<div class="img">
+<a href="img/31552-shot2.png">
+<p><img src="img/31552-shot2.png" alt="Time to use that grenade."/></p>
+</a>
+Figure 2. Time to use that grenade.
+</div>
+
+<h2>Controls and Gameplay</h2>
+
+<p class="blocktext">
+The player moves the character with the WAD keys for jump, move left, and move
+right, respectively. The player fires the machine gun with the left mouse button
+and throws the holy hand grenade with the right mouse button.
+</p>
+
+<div class="img">
+<a href="img/31552-shot1.png">
+<p><img src="img/31552-shot1.png" alt="Welcome screen with instructions."/></p>
+</a>
+Figure 3. Welcome screen with instructions.
+</div>
+
+<p class="blocktext">
+You can also make your own levels! The map.txt file is an "ascii art" image of
+the level. 'M' are the wall tiles and, 'S' is the player spawn, and 'E' is
+Rabbit spawn. This turns the game into a kind of sandbox, since the player can
+build and defend their very own bunny fortresses. The original <i>map.txt</i> is
+shown below. You can see the map in its proper orientation by rotating it 90
+degrees counter clockwise.
+</p>
+
+<div class="code">
+<pre>ME
+M
+M
+M
+MM
+M
+M
+M
+M   M
+MS  M
+MM
+MMM
+MMMM
+MMM
+MM  M
+M
+M
+M
+M
+M
+M
+MM
+MMM
+MMM
+MMMM
+MMMM
+MMMMMM
+MMMMM
+MMMMM
+MMMMMM</pre>
+</div>
+
+<h2>The Process of Writing</h2>
+
+<p class="blocktext">
+I only knew C++ well at the time, so I chose to write the game in C++ with the
+Allegro game library. I chose to write a simple platformer for simplicity.
+Writing any game in C++ within 48 hours from scratch is difficult, since you
+spend a lot of time programming for the computer instead of programming for the
+game. After writing the game on Linux, I realized nobody could play the game
+because a majority of gamers are on Windows, so I hastily slapped my code into a
+Visual Studio project and ported the game to Windows (Allegro is cross-platform
+friendly).
+</p>
+
+<h2>State of the Project</h2>
+
+<p class="blocktext">
+I've compiled this on a 64-bit machine with Debian and Windows 7. The game may
+not run straight out of the box anymore. There also seems to be memory problems
+in the Windows version. I recommend compiling from source (it just needs
+liballegro) to ensure compatibility, but you can try the executables first.
+</p>
+
+<p class="blocktext">
+You can find actual game and download links on the
+<a href="http://ludumdare.com/compo/ludum-dare-28/?action=preview&amp;uid=31552">
+original Ludum Dare submission page</a>. The source code is on Github
+<a href="https://github.com/jongtao/yogo-grenade">here</a>. The
+repository also has my compiled executables in the build folder.
+</p>
+
+<p class="blocktext">
+The game is currently a dead project, since I am not likely to touch it again.
+</p>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 31st of December in 2015. Happy New Year!
+</p>
+</div>
+</div>
+
+
+</body>
+</html>

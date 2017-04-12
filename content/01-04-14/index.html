@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<title>sudo cd</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+<body>
+
+<div class="headerpage">
+<a href="../../">Home</a>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h1>sudo cd</h1>
+
+<div class="code">
+<pre class="code">$sudo cd /root
+sudo: cd: command not found</pre>
+</div>
+
+<p class="blocktext">
+Now what? You have to get to those config files that belong to root but you’re
+not root and cd doesn’t exist. cd doesn’t exist?! BUT IT DOES EXIST! WHAT?!
+</p>
+
+
+<h2>The Why and the Fix</h2>
+
+<p class="blocktext">
+Sudo is used for running independent binaries as root temporarily, while cd is
+not an independent program. You can try searching for cd (i.e.  "whereis cd"),
+but it doesn’t exist! That’s because cd is part of the shell and is itself not
+an independent program. In order to use cd as root, we must use the shell as
+root. A solution is to su the way through and become the root user.
+</p>
+
+<div class="code">
+<pre class="code">$sudo su
+$cd /root</pre>
+</div>
+
+<p class="blocktext">
+or explicitly use the shell as root temporarily
+</p>
+
+<div class="code">
+<pre class="code">$sudo bash
+$cd /root</pre>
+</div>
+
+</div>
+</div>
+
+<div class="page">
+<div class="printable">
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 4th of January in 2014
+</p>
+<p class="blocktext">
+Last modified on the 28th of November in 2015 
+</p>
+</div>
+</div>
+
+
+</body>
+</html>

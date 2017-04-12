@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+<head>
+<title>The Sakai Top</title>
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+</head>
+<body>
+
+
+<div class="headerpage">
+<a href="../..">Home</a>
+</div>
+
+
+<div class ="page">
+<div class ="printable">
+
+<h1>The Sakai Top</h1>
+
+<p class="blocktext">
+I've come across the rather fascinating Sakai Top, a top made from a single
+wire. The top was described in 1986 by Takao Sakai, a professor of mechanical
+engineering at the Fukushima Technology Centre of Kohriyama-City [1]. The top is
+also known as the paperclip top, since it is often made with paperclips. The
+physics behind the top is often "left up to the reader as an exercise."
+</p>
+
+<div class="img">
+<a href="img/DSC_0237.JPG">
+<p><img src="thumb/DSC_0237.JPG" alt="The Sakai Top"/></p>
+</a>
+</div>
+
+<iframe
+src="https://www.youtube.com/embed/DEh2_TcpPno"
+frameborder="0"
+allowfullscreen>
+</iframe> 
+
+
+<h2>The Physics Exercise of the Top</h2>
+
+<p class="blocktext">
+The Sakai Top is constructed such that the the spokes are balanced by the
+missing arc in the top [2]. In other words, the total gravitational torque on
+the spokes is equal to the gravitational torque on the material that would have
+filled the missing arc. Let the subscript 1 denote descriptions for the missing
+arc, and subscript 2 denote descriptions for the spokes.
+</p>
+
+<div class="equation_img">
+<a href="latex/1.png">
+<p><img class="equation" src="latex/1.png" alt="eq1"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+Here, we see we need four quantities. <i>y1</i> is the center of mass of the
+"missing" arc, and <i>y2</i> is the center of mass of the spokes. <i>y1</i> and
+<i>y2</i> are distances away from the center of the top. Note that we assume
+that the top is symmetric about the bisector of the angle formed by the spokes,
+so both centers of mass lie on this bisector. <i>m1</i> is the mass of the arc,
+while <i>m2</i> is the total mass of the spokes. Both masses are modeled as
+	point masses. Finally, <i>g</i> is the gravitational acceleration.
+</p>
+
+<div class="img">
+<a href="figures/equate_torque_tex.png">
+<p><img src="figures/equate_torque_tex.png" alt="equate_torque"/></p>
+</a>
+</div>
+
+
+<h3>Description of the Missing Arc</h3>
+
+<p class="blocktext">
+Let's look at arc's center of mass, <i>y1</i>. The center of mass is the
+weighted average of positions along the angle bisector using the masses at each
+position as the weights. 
+</p>
+
+<div class="equation_img">
+<a href="latex/2.png">
+<p><img class="equation" src="latex/2.png" alt="eq2"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+First, <i>dm</i> is a small change in mass, which proportional to a very small
+arc <i>s</i> it belongs to. <i>λ</i> is the mass per length of the wire. Arc
+length <i>s</i> is described by the top's radius <i>r</i> and a very small angle
+<i>θ</i>.
+</p>
+
+<div class="equation_img">
+<a href="latex/3.png">
+<p><img class="equation" src="latex/3.png" alt="eq3"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+Second, the position along the bisector <i>y</i> can be described in terms of an
+angle <i>θ</i> and radius <i>r</i> with trigonometry.
+</p>
+
+<div class="equation_img">
+<a href="latex/4.png">
+<p><img class="equation" src="latex/4.png" alt="eq4"/></p>
+</a>
+</div>
+
+<div class="img">
+<a href="figures/bisector_tex.png">
+<p><img src="figures/bisector_tex.png" alt="bisector_tex"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+With these two descriptions, we can solve for the center of mass of the arc.
+Recognizing the symmetry along the bisector, we can integrate from 0 to
+<i>ϕ</i>, which we'll define as half of the angle formed by the spokes. The
+angle is referenced from the bisector.
+</p>
+
+
+<div class="equation_img">
+<a href="latex/5.png">
+<p><img class="equation" src="latex/5.png" alt="eq5"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+We can describe the mass of the arc <i>m1</i> with its mass density and length,
+as done previously. Note that <i>ϕ</i> is half of the angle of the arc, so we
+need <i>2ϕ</i> to describe the full arc.
+</p>
+
+
+<div class="equation_img">
+<a href="latex/6.png">
+<p><img class="equation" src="latex/6.png" alt="eq6"/></p>
+</a>
+</div>
+
+
+<p class="blocktext">
+With <i>y1</i> and <i>m1</i>, we can describe the torque due to the "missing"
+arc.
+</p>
+
+
+<h3>Description of the Two Spokes</h3>
+
+<p class="blocktext">
+Let's look at spokes' center of mass, <i>y2</i>. We take a shortcut around
+integrating for <i>y2</i> by seeing that half of the mass lies below half of the
+radius, while the other half of the mass lies above half of the radius. The
+center of mass lies on this midpoint projected onto the bisector of the spokes'
+angle.
+</p>
+
+<div class="equation_img">
+<a href="latex/7.png">
+<p><img class="equation" src="latex/7.png" alt="eq7"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+The mass of the spokes, <i>m2</i>, is the product of the mass density and the
+total length of the two spokes.
+</p>
+
+<div class="equation_img">
+<a href="latex/8.png">
+<p><img class="equation" src="latex/8.png" alt="eq8"/></p>
+</a>
+</div>
+
+
+<h3>Equating the Torques</h3>
+
+<p class="blocktext">
+The problem is now fully constrained, and we can find a specific dimension that
+makes balance possible.
+</p>
+
+<div class="equation_img">
+<a href="latex/9.png">
+<p><img class="equation" src="latex/9.png" alt="eq9"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+<i>ϕ</i> is half of the angle between the spokes, and it must be 26.57° for the
+top to balance. The full arc angle is twice of <i>ϕ</i>, which is 53.13°.
+</p>
+
+
+<h2>An Engineering Description</h2>
+
+<p class="blocktext">
+In terms of practicality, the angle <i>ϕ</i> is not very useful when it comes to
+actually making a top. Who actually has a protractor on hand?  Since you start
+building the top with a certain length of material and probably have a ruler
+somewhere, it makes sense to describe the balance condition as a length instead
+of an angle.
+</p>
+
+<p class="blocktext">
+From a length of material, we'll form the top's tip, handle, and the spokes with
+the not-missing arc. Let's describe the length taken up by the spokes and the
+existing arc with <i>L</i>.  The tip and the handle are not constrained by the
+balance condition, so we don't need to focus too much those lengths.
+</p>
+
+<div class="equation_img">
+<a href="latex/10.png">
+<p><img class="equation" src="latex/10.png" alt="eq10"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+The length <i>L</i>, which affects the balance of the top, consists of the two
+spokes and the existing arc.
+</p>
+
+<div class="equation_img">
+<a href="latex/11.png">
+<p><img class="equation" src="latex/11.png" alt="eq11"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+The existing arc exists over the external angle, <i>θ_external</i>, formed by
+the two spokes. We can describe the external angle in terms of the internal
+angle <i>2ϕ</i> that we previously found.
+</p>
+
+<div class="equation_img">
+<a href="latex/12.png">
+<p><img class="equation" src="latex/12.png" alt="eq12"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+Now, we find the balance condition in terms of the length <i>L</i> of material
+we are using.
+</p>
+
+<div class="equation_img">
+<a href="latex/13.png">
+<p><img class="equation" src="latex/13.png" alt="eq13"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+Using this radius-to-length ratio, we can replace a protractor with a ruler and
+a calculator (or multiplication skills) to find the radius from a given length
+of material. If you are particularly keen on geometry, you may skip
+multiplication altogether and use the approximated 1/7 with methods of dividing
+a line segment into n equal parts (this does require a compass, though). The
+ratio 1/7 deviates only 5.12% from the actual value.
+</p>
+
+
+<h3>Measurements for Verification</h3>
+
+<p class="blocktext">
+The process of manually bending a wire into a top is difficult to do right.
+Fortunately, just a couple of measurements can show if the top is correct.
+</p>
+
+<p class="blocktext">
+The first measurement is to make sure the top is round with the correct radius.
+Measure the radii around the whole top to make sure it's right.
+</p>
+
+<p class="blocktext">
+The second measurement is done to verify the angle. Since the angle is difficult
+to measure without a protractor, we can use the length of the chord produced by
+the two spokes to verify the angle. We can also represent the chord length in
+terms of the radius, which is proportional to the original length <i>L</i>.
+</p>
+
+<div class="equation_img">
+<a href="latex/14.png">
+<p><img class="equation" src="latex/14.png" alt="eq14"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+The approximated chord-to-length ratio 1/8 is off by only 2.80%.
+</p>
+
+
+<h2>In Summary</h2>
+
+<div class="img">
+<a href="figures/measurements_tex.png">
+<p><img src="figures/measurements_tex.png" alt="measurements"/></p>
+</a>
+</div>
+
+
+<h2>An Example Build</h2>
+
+<p class="blocktext">
+Here lies a common paperclip. I'll be using a pair of pliers and a caliper.
+</p>
+
+<div class="img">
+<a href="img/DSC_0221.JPG">
+<p><img src="thumb/DSC_0221.JPG" alt="a paperclip"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+I begin by uncurling the paperclip. It seems that the paperclip gives about 10
+cm of material.
+</p>
+
+<div class="img">
+<a href="img/DSC_0222.JPG">
+<p><img src="thumb/DSC_0222.JPG" alt="an uncurled paperclip"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+I make the tip and handle of the top. In general, keeping the handle and tip
+short will give you more material to form the body of the top, which will
+increase its rotational moment of inertia and make the top spin for a longer
+time. After bending the handle and tip, a length <i>L = 85.65 mm </i> is left. 
+</p>
+
+<div class="img">
+<a href="img/DSC_0223.JPG">
+<p><img src="thumb/DSC_0223.JPG" alt="the tip and handle"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+Using our derived ratio, I find the radius <i>r = 11.64 mm</i>. I make the bends
+for the spokes to be the length of the radius.
+</p>
+
+<div class="img">
+<a href="img/DSC_0225.JPG">
+<p><img src="thumb/DSC_0225.JPG" alt="radius"/></p>
+</a>
+</div>
+
+<div class="img">
+<a href="img/DSC_0226.JPG">
+<p><img src="thumb/DSC_0226.JPG" alt="radii"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+After making the spokes, all that's left is the main arc. I make many very small
+bends along the wire with my pliers (patience is the key). The chord of the
+completed top according to the previous calculations should be 10.41 mm.
+</p>
+
+<div class="img">
+<a href="img/DSC_0239.JPG">
+<p><img src="thumb/DSC_0239.JPG" alt="chord"/></p>
+</a>
+</div>
+
+<p class="blocktext">
+The result is a very well balanced top.
+</p>
+
+<div class="img">
+<a href="img/DSC_0229.JPG">
+<p><img src="thumb/DSC_0229.JPG" alt="It spins"/></p>
+</a>
+</div>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h2>Notes</h2>
+<p class="blocktext">
+Added "Further Reading" section 3/12/16.
+</p>
+<p class="blocktext">
+Written on the 14th of February in 2016.
+</p>
+
+<h2>References</h2>
+<ol class="citations">
+<li>
+Christian Ucke, "The paper-clip top (Sakai-top)," 
+<a href="http://www.ucke.de/christian/physik/ftp/lectures/sakaigir.htm">
+http://www.ucke.de/christian/physik/ftp/lectures/sakaigir.htm"</a>
+, Accessed February 13, 2016.
+</li>
+<li>
+Takao Sakai, "Topics on tops which enable anyone to enjoy himself,"
+Mathematical Sciences (数理科学), no. 271, p. 18-26, January 1986
+</li>
+</ol>
+
+<h2>Further Reading</h2>
+
+<p class="blocktext">
+Sakai's paper is kind of hard to find. I got Sakai's paper and an English
+translation from Professor Ucke. Professor Ucke himself obtained Sakai's paper
+directly from Professor Sakai.
+</p>
+
+<p class="blocktext">
+<a href="sakai_ucke.zip">Sakai's paper and Ucke's English translation</a>
+</p>
+
+<p class="blocktext">
+The included articles:
+</p>
+<ol class="citations">
+<li>
+Takao Sakai, "Topics on tops which enable anyone to enjoy himself,"
+Mathematical Sciences (数理科学), no. 271, p. 18-26, January 1986
+</li>
+<li>
+Christian Ucke, "Professor Sakai's Paper-Clip Tops,"
+Physics Education, Vol. 19, No. 2, p. 97-100, July 2002, (ISSN 0970-5953)
+</li>
+</ol>
+
+<div class="img">
+<a href="img/sakai.png">
+<p><img src="img/sakai.png" alt="a screenshot of Sakai's paper"/></p>
+</a>
+A screenshot of Sakai's paper
+</div>
+
+</div>
+</div>
+
+
+</body>
+</html>
