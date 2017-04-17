@@ -69,7 +69,7 @@ div.img
 	margin-top: 50px;
 	margin-bottom: 50px;
 	text-align: center;
-	width: 550px;
+	max-width: 550px;
 }
 
 
@@ -79,7 +79,7 @@ div.equation_img
 	margin-top: 25px;
 	margin-bottom: 25px;
 	text-align: center;
-	width: 550px;
+	max-width: 550px;
 }
 
 
@@ -114,14 +114,13 @@ img.automatic
 iframe
 {
 	display: block;
-	width: 40em;
 	margin: auto;
 	margin-top: 50px;
 	margin-bottom: 50px;
 	border: 0px;
 
-	width: 640px;
-	height: 480px;
+	max-width: 640px;
+	max-height: 480px;
 }
 
 
@@ -144,7 +143,7 @@ div.headerpage
 	max-width: 800px;
 	height: auto;
 	margin: auto;
-	margin-top: 32px;
+	margin-top: 10px;
 	padding: 10px;
 }
 
@@ -191,8 +190,8 @@ div.homelinks
 div.listlinks
 {
 	font-family: Helvetica;
-	margin-top:20px;
-	margin-bottom:20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 ol
