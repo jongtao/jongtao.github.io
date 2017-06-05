@@ -54,6 +54,7 @@ div.code
 	margin-top: 32px;
 	margin-bottom: 32px;
 	margin-left: 32px;
+	overflow-x: auto;
 }
 
 div.gsearch
