@@ -58,6 +58,6 @@ sed -i -e "/$AFTER/a $ENTRY" ./changelog/index.html
 
 
 # Add entry to recent changes
-ENTRY="<li><a href=\"content/$DATE\"> Added $DATE2: $TITLE</a></li>"
+ENTRY="<li><a href=content/$DATE> Added $DATE2: $TITLE</a></li>"
 AFTER="<ul>"
 sed -i -e "/$AFTER/a $ENTRY" ./index.html
