@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+<title>The Legend of the O(N) Function Call</title>
+</head>
+<body>
+
+<div class="headerpage">
+<a href="../../">Home</a>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h1>The Legend of the O(N) Function Call</h1>
+
+<p class="blocktext">
+I've come across a rather interesting piece of production code written in
+Python. Imagine a world where programmers choose not to define their own
+functions at all. Unfortunately, that world is real.
+</p>
+
+<p class="blocktext">
+Writing a giant block of monolithic code without defining functions is not
+without challenge. If programmers can't define their own functions, how do they
+organize or separate their code? How would they selectively run different blocks
+of code?  How would they manage inputs, local variables, and results for their
+blocks of code? 
+</p>
+<p class="blocktext">
+Below is a cleaned-up version of a real-world example.
+</p>
+
+<div class="code">
+<pre class="code">tasks = [1, 2, 3]
+
+database = Database()
+
+Global variables to be used across tasks defined here...
+
+final_results = []
+
+
+########## Task 1 ##########
+if 1 in tasks:
+  inputs = database.get(task 1 input data parameters...)
+  code for task 1 to create a result...
+  result_1 = result
+########## End Task 1 ##########
+
+
+########## Task 2 ##########
+if 2 in tasks:
+  inputs = database.get(task 2 input data parameters...)
+  code for task 2 to create a result...
+  result_2 = result
+########## End Task 2 ##########
+
+
+########## Task 3 ##########
+if 3 in tasks:
+  inputs = database.get(task 3 input data parameters...)
+  code for task 3 to create a result...
+  result_3 = result
+########## End Task 3 ##########
+
+
+if result_1:
+  final_results.append(result_1)
+
+if result_2:
+  final_results.append(result_2)
+
+if result_3:
+  final_results.append(result_3)</pre>
+</div>
+
+
+<h2>Code Organization and Separation</h2>
+<p class="blocktext">
+The code that would typically be encapsulated in functions is instead placed
+between comments to visually separate them from other tasks. Even when
+developing detrimentally monolithic code, programmers still seem to be able to
+care about readability for code maintenance.
+</p>
+
+<div class="code">
+<pre class="code"><b>########## Task 1 ##########</b>
+if 1 in tasks:
+  inputs = database.get(task 1 input data parameters...)
+  code for task 1 to create a result...
+  result_1 = result
+<b>########## End Task 1 ##########</b></pre>
+</div>
+
+
+<h2>Selective Execution of Code</h2>
+<p class="blocktext">
+Instead of a typical function call, execution of the code blocks is determined
+by looking up the <i>tasks</i> list to see if the code block should be executed.
+Since the tasks to be executed are stored in a list, determining whether or not
+to execute a task takes O(N) time, where N is the number of tasks to run.
+</p>
+
+<div class="code">
+<pre class="code">
+<b>tasks = [1, 2, 3]</b>
+
+...
+
+########## Task 1 ##########
+<b>if 1 in tasks:</b>
+  inputs = database.get(task 1 input data parameters...)
+  code for task 1 to create a result...
+  result_1 = result
+########## End Task 1 ##########</pre>
+</div>
+
+<h2>Handling Code Inputs</h2>
+<p class="blocktext">
+The inputs for the tasks come from either global variables or database queries.
+While the database queries are alright, the global variables introduce some
+dependencies among the tasks. Some tasks expect another task to modify the
+global variables, and other tasks don't expect such surprises. Even though the
+tasks can be selectively executed, they need to be executed in a certain order,
+which is not easily apparent to someone new to the code.
+</p>
+
+<div class="code">
+<pre class="code"><b>database = Database()</b>
+
+<b>Global variables to be used across tasks defined here...</b>
+
+...
+
+########## Task 1 ##########
+if 1 in tasks:
+  <b>inputs = database.get(task 1 input data parameters...)</b>
+  code for task 1 to create a result...
+  result_1 = result
+########## End Task 1 ##########</pre>
+</div>
+
+
+<h2>Local Variable Scoping?</h2>
+<p class="blocktext">
+An interesting detrimental aspect of using <i>if</i> statements instead of
+functions in Python is that Python does not define a new scope within <i>if</i>
+statements as languages like C or Java do. As a result, this <i>if</i> statement
+strategy eliminates the possibility of local variables within tasks. All
+variables within this monolithic code block are globally shared across tasks.
+</p>
+
+<div class="code">
+<pre class="code">########## Task 1 ##########
+if 1 in tasks:
+  <b>inputs = database.get(task 1 input data parameters...)
+  code for task 1 to create a result...
+  result_1 = result</b>
+########## End Task 1 ##########
+
+
+########## Task 2 ##########
+if 2 in tasks:
+  <b>inputs = database.get(task 2 input data parameters...)
+  code for task 2 to create a result...
+  result_2 = result</b>
+########## End Task 2 ##########
+
+
+########## Task 3 ##########
+if 3 in tasks:
+  <b>inputs = database.get(task 3 input data parameters...)
+  code for task 3 to create a result...
+  result_3 = result</b>
+########## End Task 3 ##########</pre>
+</div>
+
+
+<h2>Handling Code Results</h2>
+<p class="blocktext">
+Typical function calls have a return value that exists in the outer scope.  Our
+clever programmers knew this too, so they took advantage of the lack of scoping
+within the task code blocks mentioned earlier. They declare a new variable for
+each task's return results within the task itself.
+</p>
+<p class="blocktext">
+Of course, one variable for each result requires too much typing if the results are
+to be used by other code. To overcome this predicament, they put all the results
+into a list at the very end. Code elsewhere would operate on this list.
+</p>
+
+<div class="code">
+<pre class="code"><b>final_results = []</b>
+
+...
+
+########## Task 1 ##########
+if 1 in tasks:
+  inputs = database.get(task 1 input data parameters...)
+  code for task 1 to create a result...
+  <b>result_1 = result</b>
+########## End Task 1 ##########
+
+...
+
+<b>if result_1:
+  final_results.append(result_1)
+
+if result_2:
+  final_results.append(result_2)
+
+if result_3:
+  final_results.append(result_3)</b></pre>
+</div>
+
+<h2>As a Whole</h2>
+<p class="blocktext">
+As a result of not using functions, the programmers created a monolithic block
+of code about 500 lines long. Fortunately, these 500 lines were encapsulated in
+a function so other people won't have to worry about the code.  Unfortunately,
+the programmers decided to repeat this code pattern across thousands of lines in
+the code base.
+</p>
+<p class="blocktext">
+Finally, no code is complete without test coverage, in an enterprise setting.
+The test for this code involves executing the code monolith and printing out the
+results. It's fair to say this code base has 100% test coverage, since the test
+executes 100% of the code.
+</p>
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 4th of June in 2017
+</p>
+
+</div>
+</div>
+
+
+</body>
+</html>
