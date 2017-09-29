@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../css/main.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../../js/googleAnalytics.js"></script>
+<title>Function Generator Demonstration Unit</title>
+</head>
+<body>
+
+<div class="headerpage">
+<a href="../../">Home</a>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h1>Function Generator Demonstration Unit</h1>
+
+<div class="img">
+<a href="img/fgc200du1.JPG">
+<img src="thumb/fgc200du1.JPG" alt="FGC-200-DU1"/>
+</a>
+<p>FGC-200-DU1</p>
+</div>
+
+<p class="blocktext">
+The FGC-200-DU1 demonstration unit provides user interface for the
+<a href="../06-14-17">FGC-200 function generator</a>
+to demonstrate its functions and performance. The FGC-200-DU1 combined with the
+FGC-200 can be used as a simple laboratory function generator.
+</p>
+
+<div class="img">
+<a href="img/fgc200du1_schematic.png">
+<img src="thumb/fgc200du1_schematic.png" alt="FGC-200-DU1 Schematic"/>
+</a>
+<p>FGC-200-DU1 Schematic</p>
+</div>
+
+<p class="blocktext">
+The demonstration unit implements the function generator by providing power, an
+array of switchable timing capacitors, potentiometers as timing resistors, and a
+switch for switching output waveforms to a BNC connector. The unit is designed
+with the same dimensions as the FGC-200 to fit over it in a mezzanine style
+assembly. 
+</p>
+
+<h2>Power Supply</h2>
+<p class="blocktext">
+The power supply section can supply either a raw 5 V from a USB connection or a
+regulated 5 V from an on-board low-dropout regulator. The demonstration unit can be
+powered with either a USB connection or a 2.1x5.5 mm barrel jack that supplies 6
+to 12 V. The user can choose between the two sources of 5 V through an on-board
+slide switch. Typically a USB power source is more readily available and
+electronically cleaner than a wall-wart.
+</p>
+<h2>Range Selection</h2>
+<p class="blocktext">
+The range selection section consists of an array of timing cappacitors that are
+selectable through a DIP switch. Each of the capacitors have their own damping
+resistors to suppress parasitic oscillations. On a prototype build, 100 Ω
+resistors were used on the larger value capacitors. The capacitors were chosen
+to have low temperature variation characteristics (e.g. NP0) as cost and
+availability permits.
+</p>
+<p class="blocktext">
+The capacitors were chosen to allow the function generator to generate
+frequencies from 0.1 Hz to 40 MHz. The frequencies listed on the schematic are
+approximated values found through simulation. Towards the high frequencies,
+tunability decreases, leading to a need for more capacitors for a given
+frequency range.
+</p>
+<h2>Waveform Control</h2>
+<p class="blocktext">
+The waveform control section allows the user to control the rising and falling
+edges of the generated waveform through potentiometers. For each edge, there is
+a potentiometer for fine adjustment and another for coarse adjustment. The
+demontration unit allows adjustment of the timing resistance from about 47 Ω to
+25.5 kΩ.
+</p>
+<h2>Waveform Selection</h2>
+<p class="blocktext">
+The waveform selection switch allows the user to switch between the generated
+square, triangle, and sine waveforms for output on the BNC connector. These
+outputs are directly driven through 50 Ω outputs from the FGC-200, so the output
+on the BNC connection should be terminated with 50 Ω for best results.
+</p>
+<p class="blocktext">
+The waveforms are all centered around 2 V from the assembly's ground. The output
+of the function generator can tolerate DC voltages as long as the sourcing or
+sinking current remains below 200 mA.
+</p>
+<h2>Test Points</h2>
+<p class="blocktext">
+The demonstration unit includes test points and jumpers to help evaluate the
+function generator. The ref (W1) is a test point for the function generator's
+bandgap reference voltage output, which should be measured or used with high
+impedance.  The sine (W8), square (W10), triangle (W12) test points provide
+access to the signals before the waveform output switch. The pre_vcc (W5) and
+post_vcc (W7) test points allow measurement of the function generator's current.
+</p>
+
+<h2>Gallery</h2>
+<!-- Row 1 -->
+<div class="img">
+
+<div class="sub_img_triple">
+<a href="img/assy_top.JPG">
+<img src="thumb/assy_top.JPG" alt="Assembly Top"/>
+</a>
+<p>Assembly Top</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/assy_bottom.JPG">
+<img src="thumb/assy_bottom.JPG" alt="Assembly Bottom"/>
+</a>
+<p>Assembly Bottom</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/fgc200du1.JPG">
+<img src="thumb/fgc200du1.JPG" alt="Angled"/>
+</a>
+<p>Angled</p>
+</div>
+
+</div>
+
+<!-- Row 2 -->
+<div class="img">
+
+<div class="sub_img_triple">
+<a href="img/angle_1.JPG">
+<img src="thumb/angle_1.JPG" alt="Angle 1"/>
+</a>
+<p>Angle 1<p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/angle_2.JPG">
+<img src="thumb/angle_2.JPG" alt="Angle 2"/>
+</a>
+<p>Angle 2</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/angle_3.JPG">
+<img src="thumb/angle_3.JPG" alt="Angle 3"/>
+</a>
+<p>Angle 3</p>
+</div>
+
+</div>
+
+<!-- Row 3 -->
+<div class="img">
+
+<div class="sub_img_triple">
+<a href="img/assy_front.JPG">
+<img src="thumb/assy_front.JPG" alt="Assembly Front"/>
+</a>
+<p>Assembly Front</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/assy_back.JPG">
+<img src="thumb/assy_back.JPG" alt="Assembly Back"/>
+</a>
+<p>Assembly Back</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/angle_3.JPG">
+<img src="thumb/angle_3.JPG" alt="Assembly Tilted"/>
+</a>
+<p>Assembly Tilted</p>
+</div>
+
+</div>
+
+
+
+<!-- Row 4 -->
+<div class="img">
+
+<div class="sub_img_triple">
+<a href="img/bottom.JPG">
+<img src="thumb/bottom.JPG" alt="Back"/>
+</a>
+<p>Back<p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/bottom_angle_1.JPG">
+<img src="thumb/bottom_angle_1.JPG" alt="Back Angle 1"/>
+</a>
+<p>Back Angle 1</p>
+</div>
+
+<div class="sub_img_triple">
+<a href="img/bottom_angle_2.JPG">
+<img src="thumb/bottom_angle_2.JPG" alt="Back Angle 3"/>
+</a>
+<p>Back Angle 3</p>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+
+<div class="page">
+<div class="printable">
+
+<h2>Notes</h2>
+<p class="blocktext">
+Written on the 28th of September in 2017
+</p>
+
+</div>
+</div>
+
+
+</body>
+</html>
