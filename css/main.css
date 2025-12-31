@@ -267,7 +267,7 @@ table.listpubs {
 	overflow: auto;
 	width: 100%;
 	border-collapse: collapse;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; 
 	font-size: 12px;
 	text-align: left;
 	padding: 0px 3px;
