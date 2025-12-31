@@ -166,6 +166,12 @@ div.listlinks {
 	margin-bottom: 20px;
 }
 
+div.listpubs {
+	font-family: Helvetica;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
 ol {
 	margin-top: 10px;
 	margin-bottom: 32px;
@@ -254,4 +260,25 @@ table.data td.left {
 	border: 1px solid black;
 	text-align: left;
 	padding: 0px 3px;
+}
+
+
+table.listpubs {
+	overflow: auto;
+	width: 100%;
+	border-collapse: collapse;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	padding: 0px 3px;
+}
+
+
+table.listpubs td{
+	vertical-align: top;
+}
+
+
+table.listpubs ul{
+	padding-left: 20px;
 }
