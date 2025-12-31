@@ -268,9 +268,12 @@ table.listpubs {
 	width: 100%;
 	border-collapse: collapse;
 	font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif; 
-	font-size: 12px;
 	text-align: left;
 	padding: 0px 3px;
+}
+
+table.listpubs tr th{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
